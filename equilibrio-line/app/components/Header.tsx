@@ -1,5 +1,7 @@
 import Image from 'next/image'
-import logo from "../public/Equilibrio-line-logo.png"
+import logo from "../../public/Equilibrio-line-logo.png"
+
+
 export default function Header() {
   return (
     <header className="h-[84px] w-full bg-white flex items-center text-black font-[adelia]">
