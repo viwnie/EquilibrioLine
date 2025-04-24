@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
 	return (
-		<div className="bg-[#221E1F] px-4 py-[30px] text-white">
+		<div className="bg-[#221E1F] px-4 py-[30px] text-white w-full mt-30">
 			<div className="flex justify-evenly mt-3">
 				<h1 className="font-[adelia]">Equlibrio Line</h1>
 				<span>Direccion: C/Estación, 27, CP 30500 Molina de Segura (Murcia)</span>

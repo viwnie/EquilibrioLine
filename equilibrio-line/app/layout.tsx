@@ -26,10 +26,10 @@ export default function RootLayout({
   return (
     <html lang="es" className="h-full">
       <body
-        className={`${adelia.variable} antialiased px-5 flex flex-col min-h-screen`}
+        className={`${adelia.variable} antialiased flex flex-col min-h-screen`}
       >
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow px-5">
           {children}
         </main>
         <Footer />
