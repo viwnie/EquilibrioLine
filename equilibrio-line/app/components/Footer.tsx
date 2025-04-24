@@ -1,3 +1,8 @@
+import Image from "next/image";
+import ig from "../assets/instagram.svg";
+import fb from "../assets/Desafio 3 Facebook.png";
+import Link from "next/link";
+
 const Footer = () => {
 	return (
 		<div className="bg-[#221E1F] px-4 py-[30px] text-white">
@@ -11,11 +16,44 @@ const Footer = () => {
 				</div>
 			</div>
 
-      <div>
-        <img src="../assets/Instagram Design Desafio 3.png" alt="" />
-      <h1>kasdklaass</h1>
-      </div>
-      
+			<div className="flex mt-10 gap-42">
+				<div className="flex gap-2 ml-20">
+					<Link
+						href="https://www.instagram.com/"
+						className="rounded-full bg-white w-[20px] h-[20px] flex justify-center items-center shadow-[0px_10px_15px_rgba(0,0,0,0.1)] hover:shadow-md transition"
+					>
+						<Image src={fb} alt="Logo Equilibrio Line" />
+					</Link>
+					<Link
+						href="https://www.facebook.com/"
+						className="rounded-full bg-white w-[20px] h-[20px] flex justify-center items-center shadow-[0px_10px_15px_rgba(0,0,0,0.1)] hover:shadow-md transition"
+					>
+						<Image
+							src={ig}
+							alt="Logo Equilibrio Line"
+							className="rounded-full bg-white flex justify-center items-center shadow-[0px_10px_15px_rgba(0,0,0,0.1)] hover:shadow-md transition"
+						/>
+					</Link>
+				</div>
+				<div className="">
+					<span>
+						Developed by:{" "}
+						<Link
+							className="text-green-300"
+							href="https://www.linkedin.com/in/viniciodev/"
+						>
+							Vinicio
+						</Link>{" "}
+						and{" "}
+						<Link
+							className="text-green-300"
+							href="https://www.linkedin.com/in/renndev/"
+						>
+							Renan
+						</Link>
+					</span>
+				</div>
+			</div>
 		</div>
 	);
 };
