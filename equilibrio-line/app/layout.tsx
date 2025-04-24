@@ -24,12 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className="h-full">
       <body
-        className={`${adelia.variable} antialiased`}
+        className={`${adelia.variable} antialiased px-5 flex flex-col min-h-screen`}
       >
         <Header />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
