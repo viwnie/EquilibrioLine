@@ -19,7 +19,7 @@ export default function CarouselHome() {
           delay: 8000,
         }),
       ]}
-      className="relative w-full max-w-[100vw] overflow-hidden">
+      className="relative w-full max-w-[100vw] overflow-hidden px-5">
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
