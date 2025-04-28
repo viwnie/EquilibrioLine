@@ -67,7 +67,9 @@ export default function CarouselSection() {
 										className="object-cover"
 									/>
 									<div className="absolute top-[20%] w-[1140px] max-w-[80%] left-[50%] -translate-x-1/2 pr-[30%] text-white [text-shadow:_0_5px_10px_rgba(0,0,0,0.25)]">
-										<div className="text-2xl font-bold mb-2">{i.author}</div>
+										<div className="text-2xl font-bold mb-2 animate-fade-up animate-once animate-duration-[2000ms] animate-ease-out">
+											{i.author}
+										</div>
 										<div className="text-5xl font-bold mb-4">{i.title}</div>
 										<div className="text-3xl font-semibold mb-6">{i.des}</div>
 										<div className="text-lg mb-8">
