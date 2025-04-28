@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${adelia.variable} antialiased flex flex-col min-h-screen`}
       >
         <Header />
-        <main className="flex-grow px-5">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />
