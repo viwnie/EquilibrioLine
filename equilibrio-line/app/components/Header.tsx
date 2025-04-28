@@ -4,8 +4,8 @@ import logo from "../../public/Equilibrio-line-logo.png"
 
 export default function Header() {
   return (
-    <header className="h-[84px] w-full bg-white flex items-cente justify-between">
-      <div className='flex items-center justify-center  font-[adelia]'>
+    <header className="fixed top-0 left-0 z-50 h-[84px] w-full bg-white/80 backdrop-blur flex items-center justify-between shadow-md">
+      <div className='flex items-center justify-center font-[adelia]'>
         <Image src={logo}
           width={80}
           height={80}
