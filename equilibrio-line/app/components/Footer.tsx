@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
 	return (
-		<div className="bg-[#221E1F] px-10 md:px-30 py-[30px] text-white w-full mt-10">
+		<div className="bg-[#221E1F] px-10 md:px-30 py-[50px] text-white w-full mt-10">
 			<div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
 				<h1 className="font-[adelia] text-xl">Equilibrio Line</h1>
 				<span className="text-sm md:text-base">
