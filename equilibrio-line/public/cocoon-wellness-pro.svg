@@ -1,0 +1,34 @@
+<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="podGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f4e4bc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d4af37;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c2c2c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Pod body -->
+  <ellipse cx="100" cy="100" rx="80" ry="25" fill="url(#podGradient)" stroke="#d4af37" stroke-width="2"/>
+  <ellipse cx="100" cy="80" rx="75" ry="20" fill="url(#podGradient)" stroke="#d4af37" stroke-width="2"/>
+  
+  <!-- Pod opening -->
+  <ellipse cx="100" cy="75" rx="60" ry="15" fill="#f8f4e6" stroke="#d4af37" stroke-width="1"/>
+  
+  <!-- Control panel -->
+  <rect x="130" y="60" width="25" height="15" rx="3" fill="url(#screenGradient)" stroke="#d4af37" stroke-width="1"/>
+  <circle cx="135" cy="67" r="1.5" fill="#d4af37"/>
+  <circle cx="142" cy="67" r="1.5" fill="#d4af37"/>
+  <circle cx="149" cy="67" r="1.5" fill="#d4af37"/>
+  
+  <!-- Heat waves -->
+  <path d="M 40 50 Q 45 45 50 50 Q 55 55 60 50" stroke="#d4af37" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <path d="M 45 45 Q 50 40 55 45 Q 60 50 65 45" stroke="#d4af37" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M 50 40 Q 55 35 60 40 Q 65 45 70 40" stroke="#d4af37" stroke-width="1.5" fill="none" opacity="0.3"/>
+  
+  <!-- Temperature indicator -->
+  <text x="100" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#d4af37">COCOON</text>
+  <text x="100" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#8b4513">Wellness Pro</text>
+</svg>

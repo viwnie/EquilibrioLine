@@ -1,0 +1,53 @@
+<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="penGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f4e4bc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d4af37;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="needleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c2c2c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Dermapen device -->
+  <rect x="80" y="70" width="40" height="60" rx="20" fill="url(#penGradient)" stroke="#d4af37" stroke-width="2"/>
+  
+  <!-- Needle cartridge -->
+  <rect x="95" y="40" width="10" height="30" rx="2" fill="url(#needleGradient)" stroke="#d4af37" stroke-width="1"/>
+  
+  <!-- Individual needles -->
+  <line x1="97" y1="35" x2="97" y2="40" stroke="#d4af37" stroke-width="0.5"/>
+  <line x1="99" y1="35" x2="99" y2="40" stroke="#d4af37" stroke-width="0.5"/>
+  <line x1="101" y1="35" x2="101" y2="40" stroke="#d4af37" stroke-width="0.5"/>
+  <line x1="103" y1="35" x2="103" y2="40" stroke="#d4af37" stroke-width="0.5"/>
+  
+  <!-- Control ring -->
+  <circle cx="100" cy="85" r="8" fill="#1a1a1a" stroke="#d4af37" stroke-width="1"/>
+  <circle cx="100" cy="85" r="3" fill="#d4af37"/>
+  
+  <!-- Speed indicator -->
+  <rect x="85" y="100" width="30" height="8" rx="4" fill="#1a1a1a" stroke="#d4af37" stroke-width="1"/>
+  <rect x="88" y="103" width="8" height="2" fill="#d4af37"/>
+  <rect x="98" y="103" width="8" height="2" fill="#d4af37"/>
+  <rect x="108" y="103" width="5" height="2" fill="#d4af37"/>
+  
+  <!-- Battery indicator -->
+  <rect x="90" y="115" width="20" height="6" rx="3" fill="#1a1a1a" stroke="#d4af37" stroke-width="1"/>
+  <rect x="92" y="117" width="16" height="2" fill="#00ff00"/>
+  
+  <!-- Skin area being treated -->
+  <ellipse cx="100" cy="25" rx="30" ry="8" fill="#f8d7c3" stroke="#d4af37" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Micro-channels created -->
+  <line x1="85" y1="20" x2="85" y2="25" stroke="#d4af37" stroke-width="0.3" opacity="0.7"/>
+  <line x1="90" y1="18" x2="90" y2="23" stroke="#d4af37" stroke-width="0.3" opacity="0.7"/>
+  <line x1="95" y1="22" x2="95" y2="27" stroke="#d4af37" stroke-width="0.3" opacity="0.7"/>
+  <line x1="105" y1="19" x2="105" y2="24" stroke="#d4af37" stroke-width="0.3" opacity="0.7"/>
+  <line x1="110" y1="21" x2="110" y2="26" stroke="#d4af37" stroke-width="0.3" opacity="0.7"/>
+  <line x1="115" y1="23" x2="115" y2="28" stroke="#d4af37" stroke-width="0.3" opacity="0.7"/>
+  
+  <!-- Brand text -->
+  <text x="100" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#d4af37">Dermapen 4</text>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#8b4513">Dr. Pen</text>
+</svg>

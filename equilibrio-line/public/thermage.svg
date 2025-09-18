@@ -1,0 +1,30 @@
+<svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- THERMAGE Equipment SVG -->
+  <rect x="25" y="35" width="150" height="85" rx="12" fill="#faf8f5" stroke="#d4af37" stroke-width="2"/>
+  
+  <!-- Main display -->
+  <rect x="35" y="45" width="70" height="45" rx="8" fill="#2c2c2c" stroke="#d4af37" stroke-width="1"/>
+  <rect x="40" y="50" width="60" height="35" rx="5" fill="#1a1a1a"/>
+  
+  <!-- Control panel -->
+  <rect x="115" y="50" width="50" height="40" rx="5" fill="#f7e7ce" stroke="#d4af37" stroke-width="1"/>
+  
+  <!-- Control buttons -->
+  <circle cx="125" cy="65" r="4" fill="#d4af37"/>
+  <circle cx="145" cy="65" r="4" fill="#b8860b"/>
+  <circle cx="125" cy="80" r="4" fill="#8b7355"/>
+  <circle cx="145" cy="80" r="4" fill="#d4af37"/>
+  
+  <!-- RF handpiece -->
+  <rect x="130" y="95" width="30" height="12" rx="6" fill="#e8dfd3" stroke="#d4af37" stroke-width="1"/>
+  <circle cx="160" cy="101" r="6" fill="#f7e7ce" stroke="#d4af37" stroke-width="1"/>
+  
+  <!-- Connection cable -->
+  <path d="M115 101 L130 101" stroke="#d4af37" stroke-width="2"/>
+  
+  <!-- Base -->
+  <rect x="45" y="120" width="110" height="10" rx="5" fill="#8b7355"/>
+  
+  <!-- Brand label -->
+  <text x="100" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2c2c2c" font-weight="bold">THERMAGE</text>
+</svg>

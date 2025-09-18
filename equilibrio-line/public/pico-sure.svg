@@ -1,0 +1,35 @@
+<svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- PICO SURE Equipment SVG -->
+  <rect x="20" y="30" width="160" height="90" rx="15" fill="#fefefe" stroke="#d4af37" stroke-width="2"/>
+  
+  <!-- Laser head/display -->
+  <rect x="30" y="40" width="80" height="50" rx="10" fill="#2c2c2c" stroke="#d4af37" stroke-width="1"/>
+  <rect x="35" y="45" width="70" height="40" rx="8" fill="#1a1a1a"/>
+  
+  <!-- Laser beam indicator -->
+  <rect x="40" y="55" width="60" height="3" rx="1" fill="#d4af37" opacity="0.8"/>
+  <rect x="40" y="62" width="60" height="3" rx="1" fill="#b8860b" opacity="0.8"/>
+  <rect x="40" y="69" width="60" height="3" rx="1" fill="#8b7355" opacity="0.8"/>
+  
+  <!-- Control panel -->
+  <rect x="120" y="45" width="50" height="40" rx="8" fill="#f8f5f0" stroke="#d4af37" stroke-width="1"/>
+  
+  <!-- Control buttons -->
+  <circle cx="130" cy="60" r="5" fill="#d4af37"/>
+  <circle cx="150" cy="60" r="5" fill="#b8860b"/>
+  <circle cx="130" cy="75" r="5" fill="#8b7355"/>
+  <circle cx="150" cy="75" r="5" fill="#d4af37"/>
+  
+  <!-- Handpiece -->
+  <rect x="125" y="95" width="35" height="15" rx="7" fill="#e8dfd3" stroke="#d4af37" stroke-width="1"/>
+  <circle cx="162" cy="102" r="8" fill="#f7e7ce" stroke="#d4af37" stroke-width="1"/>
+  
+  <!-- Connection -->
+  <path d="M115 102 L125 102" stroke="#d4af37" stroke-width="2"/>
+  
+  <!-- Base -->
+  <rect x="40" y="125" width="120" height="8" rx="4" fill="#8b7355"/>
+  
+  <!-- Label -->
+  <text x="100" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2c2c2c" font-weight="bold">PICO SURE</text>
+</svg>

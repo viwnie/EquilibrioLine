@@ -2,13 +2,89 @@
 @import "tw-animate-css";
 
 :root {
-  --cor-marrom-escuro: #917864;
-  --cor-marrom-claro: #b09f85;
-  --cor-bege-claro: #ebe2d1;
-  --cor-bege-quente: #dcc7ac;
-  --cor-verde-escuro: #27593b;
+  /* Luxury Color Palette inspired by Val:U clinic */
+  --cor-dourado-claro: #d4af37;
+  --cor-dourado-escuro: #b8860b;
+  --cor-bege-luxo: #f8f5f0;
+  --cor-bege-sophisticado: #e8dfd3;
+  --cor-creme: #faf8f5;
+  --cor-marrom-luxo: #8b7355;
+  --cor-champagne: #f7e7ce;
+  --cor-off-white: #fefefe;
+  --cor-charcoal: #2c2c2c;
+  --cor-soft-gray: #f5f5f5;
+}
 
-  --cor-cinza-claro: #f5f5f5;
-  --cor-preto: #000000;
-  --cor-branco: #ffffff;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cor-soft-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cor-dourado-claro);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cor-dourado-escuro);
+}
+
+/* Typography improvements */
+body {
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid var(--cor-dourado-claro);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background: var(--cor-dourado-claro);
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
 }
