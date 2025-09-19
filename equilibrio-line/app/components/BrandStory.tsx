@@ -31,9 +31,9 @@ export default function BrandStory() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-lg text-[var(--cor-charcoal)]/80 leading-relaxed mb-8"
               >
-                Equilibrio Line es la unión perfecta entre <strong>Equilibrio</strong> (Balance) y <strong>Línea</strong> (Elegancia).
-                Para todas las personas que nos visitan, ofrecemos el valor único de cada individuo,
-                es decir, realzamos su belleza personal.
+                Equilibrio Line es la unión perfecta entre <strong>Equilibrio</strong> y <strong>Línea</strong> (Elegancia).
+                Contamos con un equipo altamente cualificado y en constante formación. Nuestra misión es ofrecer soluciones efectivas, seguras y
+                personalizadas a quienes desean mejorar su cuerpo, su piel y su bienestar general.
               </motion.p>
 
               <motion.p
@@ -43,7 +43,8 @@ export default function BrandStory() {
                 className="text-lg text-[var(--cor-charcoal)]/80 leading-relaxed"
               >
                 Tratamos a cada persona con dedicación y cuidado personalizado,
-                creando tratamientos únicos que resaltan la belleza natural de cada cliente.
+                creando tratamientos únicos que resaltan la belleza natural de cada cliente. 
+                <strong> Por qué elegirnos:</strong>
               </motion.p>
             </div>
 
@@ -55,22 +56,55 @@ export default function BrandStory() {
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">#01</span>
+                  <span className="text-white text-sm font-bold">01</span>
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
-                    Equilibrio Line descubre el valor personal y lo expresa bellamente.
+                    Trato personalizado y diagnóstico profesional
                   </h3>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">#02</span>
+                  <span className="text-white text-sm font-bold">02</span>
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
-                    Equilibrio Line se enfoca en el corazón y servicio de nuestros clientes.
+                    Equipos de última generación
+                  </h3>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">03</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
+                    Protocolos combinados para potenciar resultados
+                  </h3>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">04</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
+                    Resultados visibles desde las primeras sesiones
+                  </h3>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">05</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
+                    Amplia experiencia y compromiso con la excelencia
                   </h3>
                 </div>
               </div>
