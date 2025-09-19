@@ -1,13 +1,21 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+
+import AdelgazamientoImg from "@/app/assets/Adelgazamiento_localizado.png";
+import ReduccionCelulitisImg from "@/app/assets/Reduccion_de_celulitis.png";
+import ReduccionEstriasImg from "@/app/assets/Reduccion_de_estrias.png";
+import RemodelacionCorportalImg from "@/app/assets/Remodelacion_Corporal.png";
+import TonificacionMuscularImg from "@/app/assets/Tonificacion_muscular.png";
+import ReduccionMedidasImg from "@/app/assets/Reduccion_de_medidas.png";
+import TratamientoFlacidezImg from "@/app/assets/Tratamiento_de_flacidez.png";
 
 interface Service {
   id: number;
   title: string;
   description: string;
-  image?: string;
+  image?: string | StaticImageData;
   category: "corporal" | "facial";
 }
 
@@ -16,101 +24,108 @@ const corporalServices: Service[] = [
     id: 1,
     title: "Adelgazamiento localizado y general",
     description: "Reducción efectiva de grasa localizada mediante tecnología avanzada",
-    image: "https://images.unsplash.com/photo-1556227691-451b2561e9b8?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: AdelgazamientoImg,
     category: "corporal"
   },
   {
     id: 2,
     title: "Reducción de celulitis",
     description: "Tratamiento integral para mejorar la textura y apariencia de la piel",
-    image: "https://images.unsplash.com/photo-1620781155542-1b5a7b8f2e41?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: ReduccionCelulitisImg,
     category: "corporal"
   },
   {
     id: 3,
     title: "Reducción de estrías",
     description: "Protocolo especializado para minimizar la apariencia de estrías",
-    image: "https://images.unsplash.com/photo-1604908554023-0c28b5f59baa?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: ReduccionEstriasImg,
     category: "corporal"
   },
   {
     id: 4,
     title: "Remodelación corporal integral",
     description: "Transformación completa de la silueta con resultados duraderos",
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: RemodelacionCorportalImg,
     category: "corporal"
   },
   {
     id: 5,
     title: "Tonificación muscular y reafirmación",
     description: "Fortalecimiento y definición muscular sin cirugía",
-    image: "https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: TonificacionMuscularImg,
     category: "corporal"
   },
   {
     id: 6,
     title: "Reducción de medidas",
     description: "Protocolo completo para reducción de medidas corporales",
-    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: ReduccionMedidasImg,
     category: "corporal"
   },
   {
     id: 7,
     title: "Tratamiento de flacidez",
     description: "Reafirmación de la piel con tecnología de radiofrecuencia",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: TratamientoFlacidezImg,
     category: "corporal"
   }
 ];
+import RejuvenecimientoFacialImg from "@/app/assets/Rejuvenecimiento_Facial.png";
+import ReafirmacionOvaloFacialImg from "@/app/assets/Reafirmacion_ovalo_facial.png";
+import HidratacionProfundaImg from "@/app/assets/Hidratacion_profunda.png";
+import TratamientoAntiacneImg from "@/app/assets/Tratamientos_antiacne.png";
+import CorrecionManchasImg from "@/app/assets/Correccion_manchas.png";
+import TratamientoAntiarrugasImg from "@/app/assets/Tratamiento_antiarrugas.png";
+import LimpiezaFacialProfundaImg from "@/app/assets/Limpieza_facial_profunda.png";
 
 const facialServices: Service[] = [
   {
     id: 8,
     title: "Rejuvenecimiento facial",
     description: "Restauración de la juventud y luminosidad natural del rostro",
-    image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: RejuvenecimientoFacialImg,
     category: "facial"
   },
   {
     id: 9,
     title: "Reafirmación y redefinición del óvalo facial",
     description: "Lifting no quirúrgico para contornos faciales definidos",
-    image: "https://images.unsplash.com/photo-1522335789203-9d04c1bd29a6?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: ReafirmacionOvaloFacialImg,
     category: "facial"
   },
   {
     id: 10,
     title: "Hidratación profunda",
     description: "Nutrición intensiva para una piel radiante y saludable",
-    image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: HidratacionProfundaImg,
     category: "facial"
   },
   {
     id: 11,
     title: "Tratamientos antiacné y post-acné",
     description: "Soluciones efectivas para piel propensa al acné y sus secuelas",
-    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: TratamientoAntiacneImg,
     category: "facial"
   },
   {
     id: 12,
     title: "Corrección de manchas",
     description: "Eliminación de hiperpigmentación para un tono uniforme",
-    image: "https://images.unsplash.com/photo-1522335789203-0e5f7f0a5d0b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: CorrecionManchasImg,
     category: "facial"
   },
   {
     id: 13,
     title: "Tratamiento antiarrugas",
     description: "Prevención y corrección de líneas de expresión",
-    image: "https://images.unsplash.com/photo-1522335789203-0a2693f4b6aa?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: TratamientoAntiarrugasImg,
     category: "facial"
   },
   {
     id: 14,
     title: "Limpieza facial profunda",
     description: "Desintoxicación y purificación de la piel del rostro",
-    image: "https://images.unsplash.com/photo-1556228453-efd1f80e6f1b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=",
+    image: LimpiezaFacialProfundaImg,
     category: "facial"
   }
 ];
