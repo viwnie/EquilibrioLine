@@ -111,7 +111,7 @@ export default function BrandStory() {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Visual Element */}
+          {/* Right Content - Video Element */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -120,20 +120,21 @@ export default function BrandStory() {
             className="relative"
           >
             <div className="relative h-96 bg-gradient-to-br from-[var(--cor-bege-luxo)] to-[var(--cor-champagne)] rounded-lg overflow-hidden">
-              {/* Decorative Elements */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <span className="text-3xl">✨</span>
-                  </div>
-                  <h3 className="text-2xl font-light text-[var(--cor-charcoal)]" style={{ fontFamily: 'var(--font-adelia)' }}>
-                    Tu Belleza Única
-                  </h3>
-                  <p className="text-[var(--cor-charcoal)]/70 max-w-xs">
-                    Cada persona tiene un valor especial que merece ser realzado con elegancia
-                  </p>
-                </div>
-              </div>
+              {/* Video Element */}
+              <video
+                className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src="/Equilibrio_Video.mp4" type="video/mp4" />
+                Tu navegador no soporta el elemento de video.
+              </video>
+
+              {/* Video Overlay for better text readability */}
+              <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
 
               {/* Floating Elements */}
               <motion.div
