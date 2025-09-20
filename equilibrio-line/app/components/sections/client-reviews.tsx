@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { OpinionData, type Opinion } from "../../data/opinion";
+import { OpinionData } from "../../data/opinion";
 
 export default function ClientReviews() {
   const renderStars = (rating: number) => {
@@ -54,7 +54,7 @@ export default function ClientReviews() {
               </div>
 
               <blockquote className="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                "{opinion.texto}"
+                &ldquo;{opinion.texto}&rdquo;
               </blockquote>
 
               <div className="flex items-center">

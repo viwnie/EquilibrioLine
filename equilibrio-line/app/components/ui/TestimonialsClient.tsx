@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Testimonial {
   id: number;
@@ -112,7 +111,7 @@ const Testimonials = () => {
               {/* Testimonial Content */}
               <blockquote className="text-center mb-6">
                 <p className="text-base md:text-lg text-[var(--cor-charcoal)] leading-relaxed italic font-light">
-                  "{testimonial.content}"
+                  &ldquo;{testimonial.content}&rdquo;
                 </p>
               </blockquote>
 

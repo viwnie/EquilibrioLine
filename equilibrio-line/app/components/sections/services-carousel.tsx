@@ -80,7 +80,6 @@ const InfiniteCarousel = ({
 
     const animate = () => {
       if (!isPaused && container) {
-        const currentScroll = container.scrollLeft;
         const maxScroll = container.scrollWidth / 3;
 
         container.scrollLeft += speed * direction;
