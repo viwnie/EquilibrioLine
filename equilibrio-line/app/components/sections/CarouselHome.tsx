@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import HeroCarrossel from "@/app/assets/hero/Hero_EquilibrioLine.png";
 
-// Seeded PRNG to ensure deterministic values on server and client
 function mulberry32(seed: number) {
   let t = seed >>> 0;
   return function () {
@@ -25,9 +24,7 @@ export default function CarouselHome() {
 
   return (
     <section className="relative min-h-screen overflow-hidden" id="inicio">
-      {/* Sophisticated Background */}
       <div className="absolute inset-0 w-full h-full">
-        {/* Background Image */}
         <div className="absolute inset-0">
           <Image
             src={HeroCarrossel}
@@ -39,7 +36,6 @@ export default function CarouselHome() {
           />
         </div>
 
-        {/* Animated Particles */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => {
             const rand = mulberry32(0xC0FFEE + i);
@@ -66,11 +62,9 @@ export default function CarouselHome() {
           })}
         </div>
 
-        {/* Elegant Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
       </div>
 
-      {/* Hero Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen">
         <div className="text-center px-6 max-w-5xl mx-auto">
           <AnimatePresence>
@@ -81,8 +75,6 @@ export default function CarouselHome() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="space-y-6 md:space-y-8 lg:space-y-10"
               >
-
-                {/* Subtitle */}
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -92,7 +84,6 @@ export default function CarouselHome() {
                   Bienvenida a Equilibrio Line
                 </motion.p>
 
-                {/* Description */}
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -103,7 +94,6 @@ export default function CarouselHome() {
                   enfoque profesional y personalizado para ayudarte a conseguir tu mejor versión.
                 </motion.p>
 
-                {/* CTA Button */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -130,7 +120,6 @@ export default function CarouselHome() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
