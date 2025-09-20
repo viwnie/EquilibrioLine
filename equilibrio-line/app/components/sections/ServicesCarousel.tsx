@@ -3,13 +3,13 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image, { type StaticImageData } from "next/image";
 
-import AdelgazamientoImg from "@/app/assets/Adelgazamiento_localizado.png";
-import ReduccionCelulitisImg from "@/app/assets/Reduccion_de_celulitis.png";
-import ReduccionEstriasImg from "@/app/assets/Reduccion_de_estrias.png";
-import RemodelacionCorportalImg from "@/app/assets/Remodelacion_Corporal.png";
-import TonificacionMuscularImg from "@/app/assets/Tonificacion_muscular.png";
-import ReduccionMedidasImg from "@/app/assets/Reduccion_de_medidas.png";
-import TratamientoFlacidezImg from "@/app/assets/Tratamiento_de_flacidez.png";
+import AdelgazamientoImg from "@/app/assets/treatments/corporal/Adelgazamiento_localizado.png";
+import ReduccionCelulitisImg from "@/app/assets/treatments/corporal/Reduccion_de_celulitis.png";
+import ReduccionEstriasImg from "@/app/assets/treatments/corporal/Reduccion_de_estrias.png";
+import RemodelacionCorportalImg from "@/app/assets/treatments/corporal/Remodelacion_Corporal.png";
+import TonificacionMuscularImg from "@/app/assets/treatments/corporal/Tonificacion_muscular.png";
+import ReduccionMedidasImg from "@/app/assets/treatments/corporal/Reduccion_de_medidas.png";
+import TratamientoFlacidezImg from "@/app/assets/treatments/corporal/Tratamiento_de_flacidez.png";
 
 interface Service {
   id: number;
@@ -70,13 +70,13 @@ const corporalServices: Service[] = [
     category: "corporal"
   }
 ];
-import RejuvenecimientoFacialImg from "@/app/assets/Rejuvenecimiento_Facial.png";
-import ReafirmacionOvaloFacialImg from "@/app/assets/Reafirmacion_ovalo_facial.png";
-import HidratacionProfundaImg from "@/app/assets/Hidratacion_profunda.png";
-import TratamientoAntiacneImg from "@/app/assets/Tratamientos_antiacne.png";
-import CorrecionManchasImg from "@/app/assets/Correccion_manchas.png";
-import TratamientoAntiarrugasImg from "@/app/assets/Tratamiento_antiarrugas.png";
-import LimpiezaFacialProfundaImg from "@/app/assets/Limpieza_facial_profunda.png";
+import RejuvenecimientoFacialImg from "@/app/assets/treatments/facial/Rejuvenecimiento_Facial.png";
+import ReafirmacionOvaloFacialImg from "@/app/assets/treatments/facial/Reafirmacion_ovalo_facial.png";
+import HidratacionProfundaImg from "@/app/assets/treatments/facial/Hidratacion_profunda.png";
+import TratamientoAntiacneImg from "@/app/assets/treatments/facial/Tratamientos_antiacne.png";
+import CorrecionManchasImg from "@/app/assets/treatments/facial/Correccion_manchas.png";
+import TratamientoAntiarrugasImg from "@/app/assets/treatments/facial/Tratamiento_antiarrugas.png";
+import LimpiezaFacialProfundaImg from "@/app/assets/treatments/facial/Limpieza_facial_profunda.png";
 
 const facialServices: Service[] = [
   {

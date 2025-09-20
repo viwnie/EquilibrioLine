@@ -5,7 +5,7 @@ import {
   Tecnologia, 
   TestimonialsClient as Testimonials, 
   Contacto 
-} from './components';
+} from './components/';
 
 export default function Home() {
   return (

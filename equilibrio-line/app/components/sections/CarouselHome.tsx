@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import HeroCarrossel from "@/app/assets/Hero_EquilibrioLine.png";
+import HeroCarrossel from "@/app/assets/hero/Hero_EquilibrioLine.png";
 
 // Seeded PRNG to ensure deterministic values on server and client
 function mulberry32(seed: number) {
