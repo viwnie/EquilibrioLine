@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Equipos", href: "#equipos" },
   { label: "Testimonios", href: "#testimonios" },
   { label: "Contacto", href: "#contacto" },
-  { label: "Localización", href: "#localizacion" },
+  { label: "Ubicación", href: "#ubicacion" },
 ];
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
