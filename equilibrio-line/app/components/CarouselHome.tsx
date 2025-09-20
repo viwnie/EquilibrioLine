@@ -39,9 +39,6 @@ export default function CarouselHome() {
           />
         </div>
 
-        {/* Gradient Background */}
-        {/* Removido o fundo preto sólido e mantido apenas overlays sutis para legibilidade */}
-        
         {/* Animated Particles */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => {
@@ -82,7 +79,7 @@ export default function CarouselHome() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="space-y-10"
+                className="space-y-6 md:space-y-8 lg:space-y-10"
               >
 
                 {/* Subtitle */}
@@ -90,7 +87,7 @@ export default function CarouselHome() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-white/90 text-2xl md:text-3xl font-light tracking-wide max-w-3xl mx-auto leading-relaxed"
+                  className="text-white/90 text-xl md:text-2xl lg:text-3xl font-light tracking-wide max-w-3xl mx-auto leading-relaxed"
                 >
                   Bienvenida a Equilibrio Line
                 </motion.p>
@@ -100,7 +97,7 @@ export default function CarouselHome() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.45 }}
-                  className="text-white/70 text-lg md:text-xl font-light max-w-4xl mx-auto leading-relaxed"
+                  className="text-white/70 text-base md:text-lg lg:text-xl font-light max-w-4xl mx-auto leading-relaxed px-4"
                 >
                   Especialistas en remodelación corporal y cuidado facial avanzado. Nuestro centro estético en Molina de Segura combina tecnología de última generación con un
                   enfoque profesional y personalizado para ayudarte a conseguir tu mejor versión.
@@ -111,7 +108,7 @@ export default function CarouselHome() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
-                  className="pt-12"
+                  className="pt-8 md:pt-10 lg:pt-12"
                 >
                   <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -119,9 +116,10 @@ export default function CarouselHome() {
                   >
                     <Link
                       href="#contacto"
-                      className="inline-block px-16 py-5 bg-transparent border-2 border-white/60 text-white hover:bg-white hover:text-black transition-all duration-700 text-lg font-light tracking-widest uppercase backdrop-blur-sm"
+                      className="inline-block px-8 py-4 md:px-12 md:py-5 lg:px-16 lg:py-5 bg-transparent border-2 border-white/60 text-white hover:bg-white hover:text-black transition-all duration-700 text-sm md:text-base lg:text-lg font-light tracking-widest uppercase backdrop-blur-sm"
                     >
                       Solicita tu primera
+                      <br className="sm:hidden" />
                       sesión gratuita
                     </Link>
                   </motion.div>
@@ -137,15 +135,15 @@ export default function CarouselHome() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.9 }}
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-6 md:bottom-8 lg:bottom-20 left-1/2 transform -translate-x-1/2 z-10"
       >
-        <div className="flex flex-col items-center space-y-2">
-          <span className="text-white/60 text-sm font-light tracking-wider uppercase">Scroll</span>
-          <div className="w-px h-20 bg-gradient-to-b from-white/60 to-transparent"></div>
+        <div className="flex flex-col items-center space-y-1 md:space-y-2">
+          <span className="text-white/60 text-xs md:text-sm font-light tracking-wider uppercase">Scroll</span>
+          <div className="w-px h-12 md:h-16 lg:h-20 bg-gradient-to-b from-white/60 to-transparent"></div>
           <motion.div
-            animate={{ y: [0, 15, 0] }}
+            animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-3 h-3 bg-white/70 rounded-full"
+            className="w-2 h-2 md:w-3 md:h-3 bg-white/70 rounded-full"
           ></motion.div>
         </div>
       </motion.div>
