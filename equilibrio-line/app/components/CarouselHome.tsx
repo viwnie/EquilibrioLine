@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import HeroCarrossel from "@/app/assets/Hero_EquilibrioLine.png";
 
 // Seeded PRNG to ensure deterministic values on server and client
 function mulberry32(seed: number) {
@@ -25,9 +27,21 @@ export default function CarouselHome() {
     <section className="relative min-h-screen overflow-hidden" id="inicio">
       {/* Sophisticated Background */}
       <div className="absolute inset-0 w-full h-full">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={HeroCarrossel}
+            alt="Equilibrio Line"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
 
+        {/* Gradient Background */}
+        {/* Removido o fundo preto sólido e mantido apenas overlays sutis para legibilidade */}
+        
         {/* Animated Particles */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => {
