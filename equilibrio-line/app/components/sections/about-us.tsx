@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { beneficios } from "../../data/beneficios";
+import { BenefitsData } from "../../data/benefits";
 
 export default function AboutUs() {
   return (
@@ -58,7 +58,7 @@ export default function AboutUs() {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {beneficios.map((beneficio, index) => (
+            {BenefitsData.map((beneficio, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}

@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { opiniones, type Opinion } from "../../data/opiniones";
+import { OpinionData, type Opinion } from "../../data/opinion";
 
 export default function ClientReviews() {
   const renderStars = (rating: number) => {
@@ -40,7 +40,7 @@ export default function ClientReviews() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
         >
-          {opiniones.map((opinion, index) => (
+          {OpinionData.map((opinion, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}

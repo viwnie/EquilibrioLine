@@ -6,7 +6,7 @@ import Dermapen from "@/app/assets/equipment/Dermapen-4-Face.png";
 import H2O2 from "@/app/assets/equipment/H2-O2_bubble.png";
 import Tanita from "@/app/assets/equipment/Tanita 580P.png";
 
-export const equipamentos = [
+export const EquipmentData = [
   {
     nombre: "Cocoon Wellness Pro",
     descripcion: "Termoterapia integral para adelgazar, detoxificar y activar el metabolismo.",

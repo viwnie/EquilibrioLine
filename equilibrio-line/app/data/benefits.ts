@@ -1,4 +1,4 @@
-export const beneficios: string[] = [
+export const BenefitsData: string[] = [
   "Trato personalizado y diagnóstico profesional",
   "Equipos de última generación",
   "Protocolos combinados para potenciar resultados",

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { allTreatments } from "../../data/treatments";
-import { contactInfoData } from "../../data/contactInfo";
+import { ContactInfoData } from "../../data/contactInfo";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -141,7 +141,7 @@ export default function Contact() {
             </h3>
 
             <div className="space-y-4 md:space-y-6">
-              {contactInfoData.map((info, index) => (
+              {ContactInfoData.map((info, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}

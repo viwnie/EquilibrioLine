@@ -5,7 +5,7 @@ export interface ContactInfo {
   subvalue?: string;
 }
 
-export const contactInfoData = [
+export const ContactInfoData = [
   {
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

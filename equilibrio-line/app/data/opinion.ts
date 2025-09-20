@@ -4,7 +4,7 @@ export interface Opinion {
   rating: number;
 }
 
-export const opiniones: Opinion[] = [
+export const OpinionData: Opinion[] = [
   {
     texto: "Desde la primera sesión noté resultados. La atención es excelente y los tratamientos realmente funcionan.",
     autor: "Laura G.",
