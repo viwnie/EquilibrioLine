@@ -94,8 +94,8 @@ export default function Tecnologia() {
                     <Image
                       src={equipo.imagen}
                       alt={equipo.nombre}
-                      width={120}
-                      height={120}
+                      width={equipo.nombre === "MagnaShape Quadra Core" ? 180 : 120}
+                      height={equipo.nombre === "MagnaShape Quadra Core" ? 180 : 120}
                       className="object-contain filter group-hover:scale-110 transition-transform duration-500"
                     />
                   )}
