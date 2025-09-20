@@ -6,7 +6,7 @@ Bem-vindo ao repositório do projeto Equilibrio-Line! Este é o meu primeiro tra
 
 A Equilibrio-Line é uma clínica de estética localizada em Molina de Segura, Murcia, Espanha. Nossa clínica oferece uma ampla gama de serviços de beleza e bem-estar para ajudá-lo a parecer e sentir-se melhor. Com uma equipe dedicada de profissionais, estamos prontos para ajudar nossos clientes a atingirem seus objetivos de beleza e saúde.
 
-🌐 WebSite: https://www.equilibrio-line.com/
+🌐 WebSite: https://www.equilibrioline.com/
 
 🌍 Idioma: Espanhol
 
