@@ -202,6 +202,7 @@ export default function Contacto() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
             className="bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/10 overflow-hidden"
           >
             <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white mb-4 md:mb-8 break-words" style={{ fontFamily: 'var(--font-adelia)' }}>
@@ -215,6 +216,7 @@ export default function Contacto() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
                   className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10"
                 >
                   <div className="text-[var(--cor-dourado-claro)] mt-1 flex-shrink-0">
