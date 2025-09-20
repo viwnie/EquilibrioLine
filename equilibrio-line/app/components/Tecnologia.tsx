@@ -1,63 +1,58 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from 'next/image';
+import Cocoon from "../assets/Cocoon_Wellness.webp";
+import MagnaShape from "../assets/magnaShape.png";
+import Tecarplus from "../assets/Tecarplus_448.png";
+import OLV10 from "../assets/OLV-10.png";
+import Dermapen from "../assets/Dermapen-4-Face.png";
+import H2O2 from "../assets/H2-O2_bubble.png";
+import Tanita from "../assets/Tanita 580P.png";
 
 export default function Tecnologia() {
   const equipamentos = [
     {
-      nombre: "ULTHERA",
-      descripcion: "Ultrasonido microfocalizado para lifting facial no invasivo con resultados duraderos.",
-      imagen: "/ulthera.svg",
-      categoria: "Lifting"
-    },
-    {
-      nombre: "THERMAGE",
-      descripcion: "Radiofrecuencia monopolar para reafirmación y rejuvenecimiento facial y corporal.",
-      imagen: "/thermage.svg",
-      categoria: "Reafirmación"
-    },
-    {
-      nombre: "PICO SURE",
-      descripcion: "Láser picosegundo para eliminación de manchas y rejuvenecimiento cutáneo.",
-      imagen: "/pico-sure.svg",
-      categoria: "Láser"
-    },
-    {
-      nombre: "Dermapen 4",
-      descripcion: "Microagujas para regeneración celular, estrías y mejora de textura cutánea.",
-      imagen: "/dermapen-4.svg",
-      categoria: "Microagujas"
-    },
-    {
-      nombre: "H2-O2 Small Bubble",
-      descripcion: "Limpieza facial profunda con burbujas ricas en hidrógeno y oxígeno.",
-      imagen: "/h2o2-small-bubble.svg",
-      categoria: "Limpieza Facial"
+      nombre: "Cocoon Wellness Pro",
+      descripcion: "Termoterapia integral para adelgazar, detoxificar y activar el metabolismo.",
+      imagen: Cocoon,
+      categoria: "Termoterapia",
     },
     {
       nombre: "MagnaShape Quadra Core",
       descripcion: "Radiofrecuencia multipolar para celulitis, grasa localizada y flacidez.",
-      imagen: "/magnashape-quadra-core.svg",
-      categoria: "Radiofrecuencia"
+      imagen: MagnaShape,
+      categoria: "Radiofrecuencia",
     },
     {
       nombre: "Tecarplus 448 kHz",
       descripcion: "Tecarterapia para reafirmación profunda, tonificación y recuperación muscular.",
-      imagen: "/tecarplus-448khz.svg",
-      categoria: "Tecarterapia"
+      imagen: Tecarplus,
+      categoria: "Tecarterapia",
     },
     {
-      nombre: "OLV-10 Oxigenoterapia",
-      descripcion: "Oxigenoterapia con efectos regenerativos y calmantes para la piel.",
-      imagen: "/olv-10-oxigenoterapia.svg",
-      categoria: "Oxigenoterapia"
+      nombre: "OLV-10",
+      descripcion: "Oxigenoterapia con efectos regenerativos y calmantes.",
+      imagen: OLV10,
+      categoria: "Oxigenoterapia",
     },
     {
-      nombre: "Tanita 580P",
-      descripcion: "Análisis corporal profesional para planificación de tratamientos personalizados.",
-      imagen: "/tanita-580p.svg",
-      categoria: "Análisis"
-    }
+      nombre: "Dermapen 4 / Dr. Pen",
+      descripcion: "Microagujas para regeneración celular, estrías y alopecia.",
+      imagen: Dermapen,
+      categoria: "Microagujas",
+    },
+    {
+      nombre: "H2-O2 Small Bubble",
+      descripcion: "Limpieza facial profunda con burbujas ricas en hidrógeno y oxígeno.",
+      imagen: H2O2,
+      categoria: "Limpieza Facial",
+    },
+    {
+      nombre: "Tanita 580P + Dietowin",
+      descripcion: "Análisis corporal profesional y planificación nutricional personalizada.",
+      imagen: Tanita,
+      categoria: "Análisis y Nutrición",
+    },
   ];
 
   return (
