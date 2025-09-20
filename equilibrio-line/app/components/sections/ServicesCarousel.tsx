@@ -13,19 +13,16 @@ const InfiniteCarousel = ({
 }) => {
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  // Corrige a reclamação do TS: inicializa o ref como null e inclui null na tipagem
   const animationRef = useRef<number | null>(null);
   const speed = 0.8;
   const isInitialized = useRef(false);
 
-  // Duplicar os serviços para criar efeito infinito
   const duplicatedServices = [...services, ...services, ...services];
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Inicializar na posição média apenas uma vez
     if (!isInitialized.current) {
       container.scrollLeft = container.scrollWidth / 3;
       isInitialized.current = true;
@@ -36,10 +33,8 @@ const InfiniteCarousel = ({
         const currentScroll = container.scrollLeft;
         const maxScroll = container.scrollWidth / 3;
 
-        // Movimento contínuo
         container.scrollLeft += speed * direction;
 
-        // Reposicionar suavemente quando chegar ao fim
         if (direction > 0 && container.scrollLeft >= maxScroll * 2) {
           container.scrollLeft = maxScroll;
         } else if (direction < 0 && container.scrollLeft <= 0) {
@@ -65,8 +60,6 @@ const InfiniteCarousel = ({
 
   return (
     <div className="space-y-8">
-      {/* Removido o título interno do carrossel */}
-
       <div className="relative">
         <div
           ref={containerRef}
@@ -86,7 +79,6 @@ const InfiniteCarousel = ({
                   transition={{ duration: 0.3 }}
                   className="bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-500 border border-[var(--cor-soft-gray)]/30 hover:border-[var(--cor-dourado-claro)]/50 h-72 flex flex-col"
                 >
-                  {/* Seção de imagen do tratamento */}
                   <div className="relative w-full h-28 mb-4 overflow-hidden rounded-md bg-[var(--cor-soft-gray)]/20">
                     {service.image ? (
                       <Image src={service.image} alt={service.title} fill className="object-cover" />
@@ -115,7 +107,6 @@ const InfiniteCarousel = ({
           </div>
         </div>
 
-        {/* Gradiente para efeito visual - agora fora do container de scroll */}
         <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none hidden md:block"></div>
         <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none hidden md:block"></div>
       </div>
@@ -127,7 +118,6 @@ export default function ServicesCarousel() {
   return (
     <section className="py-32 bg-gradient-to-br from-white via-[var(--cor-soft-gray)] to-white" id="servicios">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
         <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -161,15 +151,14 @@ export default function ServicesCarousel() {
           </motion.p>
         </div>
 
-        {/* Services Carousels */}
         <InfiniteCarousel
           services={corporalServices}
-          direction={-1} // Move para esquerda
+          direction={-1}
         />
 
         <InfiniteCarousel
           services={facialServices}
-          direction={1} // Move para direita
+          direction={1}
         />
       </div>
     </section>
