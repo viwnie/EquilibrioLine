@@ -7,10 +7,11 @@ import logo from "../../public/Equilibrio-line-logo.svg";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
-  { label: "Equipos", href: "#equipos" },
   { label: "Nosotros", href: "#nosotros" },
+  { label: "Equipos", href: "#equipos" },
   { label: "Testimonios", href: "#testimonios" },
   { label: "Contacto", href: "#contacto" },
+  { label: "Localización", href: "#localizacion" },
 ];
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
@@ -24,7 +25,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
       className="text-sm font-light tracking-wide transition-all duration-300 hover:text-[var(--cor-dourado-escuro)] relative group block px-3 py-2 rounded-full focus:outline-none focus:ring-0"
     >
       {children}
-      <motion.span 
+      <motion.span
         className="absolute -bottom-1 left-0 h-px bg-[var(--cor-dourado-escuro)]"
         initial={{ width: 0 }}
         whileHover={{ width: "100%" }}
@@ -35,9 +36,9 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
 );
 
 const MobileMenuButton = ({ onClick }: { onClick: () => void }) => (
-  <motion.button 
-    onClick={onClick} 
-    aria-label="Abrir menu" 
+  <motion.button
+    onClick={onClick}
+    aria-label="Abrir menu"
     className="p-2 rounded-full hover:bg-white/10 transition-colors duration-300 focus:outline-none focus:ring-0"
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.9 }}
@@ -85,8 +86,8 @@ const Logo = () => (
     whileTap={{ scale: 0.95 }}
     className="relative focus:outline-none focus:ring-0"
   >
-    <Link 
-      href="#inicio" 
+    <Link
+      href="#inicio"
       className="flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer focus:outline-none focus:ring-0"
       style={{ outline: 'none', WebkitTapHighlightColor: 'transparent' }}
     >

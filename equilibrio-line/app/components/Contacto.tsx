@@ -22,7 +22,7 @@ export default function Contacto() {
     e.preventDefault();
     
     // Construir mensagem para WhatsApp
-    const message = `Hola soy ${formData.name}, vengo por medio de vuestra página web, tengo interés en ${formData.treatment}`;
+    const message = `Hola 😊, soy ${formData.name}. Les escribo desde su página web porque estoy interesada en ${formData.treatment}. ¿Podrían darme más información, por favor?`;
     const whatsappUrl = `https://wa.me/34621665635?text=${encodeURIComponent(message)}`;
     
     // Abrir WhatsApp
