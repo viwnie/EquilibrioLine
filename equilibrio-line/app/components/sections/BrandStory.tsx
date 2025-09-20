@@ -1,6 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
 
+const reasons = [
+  "Trato personalizado y diagnóstico profesional",
+  "Equipos de última generación",
+  "Protocolos combinados para potenciar resultados",
+  "Resultados visibles desde las primeras sesiones",
+  "Amplia experiencia y compromiso con la excelencia"
+];
+
 const BrandStory = () => {
    return (
      <section className="py-24 bg-white overflow-hidden" id="nosotros">
@@ -53,60 +61,18 @@ const BrandStory = () => {
                transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
                className="space-y-6"
              >
-               <div className="flex items-start space-x-4">
-                 <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
-                   <span className="text-white text-sm font-bold">01</span>
+               {reasons.map((reason, index) => (
+                 <div key={index} className="flex items-start space-x-4">
+                   <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
+                     <span className="text-white text-sm font-bold">{String(index + 1).padStart(2, '0')}</span>
+                   </div>
+                   <div>
+                     <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
+                       {reason}
+                     </h3>
+                   </div>
                  </div>
-                 <div>
-                   <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
-                     Trato personalizado y diagnóstico profesional
-                   </h3>
-                 </div>
-               </div>
-
-               <div className="flex items-start space-x-4">
-                 <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
-                   <span className="text-white text-sm font-bold">02</span>
-                 </div>
-                 <div>
-                   <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
-                     Equipos de última generación
-                   </h3>
-                 </div>
-               </div>
-
-               <div className="flex items-start space-x-4">
-                 <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
-                   <span className="text-white text-sm font-bold">03</span>
-                 </div>
-                 <div>
-                   <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
-                     Protocolos combinados para potenciar resultados
-                   </h3>
-                 </div>
-               </div>
-
-               <div className="flex items-start space-x-4">
-                 <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
-                   <span className="text-white text-sm font-bold">04</span>
-                 </div>
-                 <div>
-                   <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
-                     Resultados visibles desde las primeras sesiones
-                   </h3>
-                 </div>
-               </div>
-
-               <div className="flex items-start space-x-4">
-                 <div className="flex-shrink-0 w-8 h-8 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center">
-                   <span className="text-white text-sm font-bold">05</span>
-                 </div>
-                 <div>
-                   <h3 className="text-lg font-medium text-[var(--cor-charcoal)] mb-2">
-                     Amplia experiencia y compromiso con la excelencia
-                   </h3>
-                 </div>
-               </div>
+               ))}
              </motion.div>
            </motion.div>
 
@@ -118,7 +84,6 @@ const BrandStory = () => {
              className="relative"
            >
              <div className="relative h-96 bg-gradient-to-br from-[var(--cor-bege-luxo)] to-[var(--cor-champagne)] rounded-lg overflow-hidden">
-               {/* Video Element */}
                <video
                  className="absolute inset-0 w-full h-full object-cover rounded-lg"
                  autoPlay
@@ -131,7 +96,6 @@ const BrandStory = () => {
                  Tu navegador no soporta el elemento de video.
                </video>
 
-               {/* Video Overlay for better text readability */}
                <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
 
                {/* Floating Elements */}

@@ -1,9 +1,11 @@
-import CarouselHome from './components/CarouselHome';
-import ServicesCarousel from './components/ServicesCarousel';
-import BrandStory from './components/BrandStory';
-import Tecnologia from './components/Tecnologia';
-import Testimonials from './components/TestimonialsClient';
-import Contacto from './components/Contacto';
+import { 
+  CarouselHome, 
+  ServicesCarousel, 
+  BrandStory, 
+  Tecnologia, 
+  TestimonialsClient as Testimonials, 
+  Contacto 
+} from './components';
 
 export default function Home() {
   return (

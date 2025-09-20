@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from 'next/font/local';
-import Header from "./components/Header"
-import Footer from "./components/Footer";
+import { Header, Footer } from "./components";
 import "./globals.css";
 
 const adelia = localFont({

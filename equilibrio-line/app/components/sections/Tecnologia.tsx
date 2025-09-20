@@ -1,13 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from 'next/image';
-import Cocoon from "../assets/Cocoon_Wellness.webp";
-import MagnaShape from "../assets/magnaShape.png";
-import Tecarplus from "../assets/Tecarplus_448.png";
-import OLV10 from "../assets/OLV-10.png";
-import Dermapen from "../assets/Dermapen-4-Face.png";
-import H2O2 from "../assets/H2-O2_bubble.png";
-import Tanita from "../assets/Tanita 580P.png";
+import Cocoon from "../../assets/Cocoon_Wellness.webp";
+import MagnaShape from "../../assets/magnaShape.png";
+import Tecarplus from "../../assets/Tecarplus_448.png";
+import OLV10 from "../../assets/OLV-10.png";
+import Dermapen from "../../assets/Dermapen-4-Face.png";
+import H2O2 from "../../assets/H2-O2_bubble.png";
+import Tanita from "../../assets/Tanita 580P.png";
 
 export default function Tecnologia() {
   const equipamentos = [

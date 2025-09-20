@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../../public/Equilibrio-line-logo.svg";
+import logo from "../../../public/Equilibrio-line-logo.svg";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
@@ -22,7 +22,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
   >
     <Link
       href={href}
-      className="text-sm font-light tracking-wide transition-all duration-300 hover:text-[var(--cor-dourado-escuro)] relative group block px-3 py-2 rounded-full focus:outline-none focus:ring-0"
+      className="text-sm font-light tracking-wide transition-all duration-300 hover:text-[var(--cor-dourado-escuro)] relative group block px-3 py-2 rounded-full focus:outline-none"
     >
       {children}
       <motion.span
@@ -39,7 +39,7 @@ const MobileMenuButton = ({ onClick }: { onClick: () => void }) => (
   <motion.button
     onClick={onClick}
     aria-label="Abrir menu"
-    className="p-2 rounded-full hover:bg-white/10 transition-colors duration-300 focus:outline-none focus:ring-0"
+    className="p-2 rounded-full hover:bg-white/10 transition-colors duration-300 focus:outline-none"
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.9 }}
   >
@@ -62,7 +62,7 @@ const CloseMenuButton = ({ onClick }: { onClick: () => void }) => (
   <motion.button
     onClick={onClick}
     aria-label="Fechar menu"
-    className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors duration-300 focus:outline-none focus:ring-0"
+    className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors duration-300 focus:outline-none"
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.9 }}
   >
@@ -84,26 +84,24 @@ const Logo = () => (
   <motion.div
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
-    className="relative focus:outline-none focus:ring-0"
+    className="relative focus:outline-none"
   >
     <Link
       href="#inicio"
-      className="flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer focus:outline-none focus:ring-0"
-      style={{ outline: 'none', WebkitTapHighlightColor: 'transparent' }}
+      className="flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer focus:outline-none"
     >
-      <div className="relative w-12 h-12 rounded-full overflow-hidden focus:outline-none focus:ring-0" style={{ outline: 'none' }}>
+      <div className="relative w-12 h-12 rounded-full overflow-hidden focus:outline-none">
         <Image
           src={logo}
           alt="Logo Equilibrio Line"
           fill
           priority
-          className="object-cover focus:outline-none focus:ring-0"
-          style={{ outline: 'none' }}
+          className="object-cover focus:outline-none"
         />
       </div>
       <span
-        className="ml-3 text-xl font-light tracking-wide text-[var(--cor-charcoal)] focus:outline-none focus:ring-0"
-        style={{ fontFamily: 'var(--font-adelia)', outline: 'none' }}
+        className="ml-3 text-xl font-light tracking-wide text-[var(--cor-charcoal)] focus:outline-none"
+        style={{ fontFamily: 'var(--font-adelia)' }}
       >
         Equilibrio Line
       </span>
@@ -197,7 +195,7 @@ export default function Header() {
                     <Link
                       href={link.href}
                       onClick={closeMenu}
-                      className="text-lg font-light tracking-wide transition-colors duration-300 hover:text-[var(--cor-dourado-escuro)] block py-3 focus:outline-none focus:ring-0"
+                      className="text-lg font-light tracking-wide transition-colors duration-300 hover:text-[var(--cor-dourado-escuro)] block py-3 focus:outline-none"
                     >
                       {link.label}
                     </Link>
