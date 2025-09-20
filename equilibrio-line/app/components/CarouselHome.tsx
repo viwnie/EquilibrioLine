@@ -135,10 +135,9 @@ export default function CarouselHome() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.9 }}
-        className="absolute bottom-6 md:bottom-8 lg:bottom-20 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-6 md:bottom-8 lg:bottom-8 xl:bottom-12 left-1/2 transform -translate-x-1/2 z-10"
       >
         <div className="flex flex-col items-center space-y-1 md:space-y-2">
-          <span className="text-white/60 text-xs md:text-sm font-light tracking-wider uppercase">Scroll</span>
           <div className="w-px h-12 md:h-16 lg:h-20 bg-gradient-to-b from-white/60 to-transparent"></div>
           <motion.div
             animate={{ y: [0, 10, 0] }}
