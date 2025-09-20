@@ -1,26 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { opiniones, type Opinion } from "../../data/opiniones";
 
 export default function OpinionesClientes() {
-  const opiniones = [
-    {
-      texto: "Desde la primera sesión noté resultados. La atención es excelente y los tratamientos realmente funcionan.",
-      autor: "Laura G.",
-      rating: 5
-    },
-    {
-      texto: "Gracias a Equilibrio Line recuperé la confianza en mi cuerpo. Los profesionales son cercanos y muy preparados.",
-      autor: "Carmen R.",
-      rating: 5
-    },
-    {
-      texto: "La tecnología que utilizan es impresionante. Mi piel ha cambiado por completo.",
-      autor: "Ana M.",
-      rating: 5
-    }
-  ];
-
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <svg

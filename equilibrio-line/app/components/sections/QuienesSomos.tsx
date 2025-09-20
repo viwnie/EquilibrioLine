@@ -1,15 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
+import { beneficios } from "../../data/beneficios";
 
 export default function QuienesSomos() {
-  const beneficios = [
-    "Trato personalizado y diagnóstico profesional",
-    "Equipos de última generación",
-    "Protocolos combinados para potenciar resultados",
-    "Resultados visibles desde las primeras sesiones",
-    "Amplia experiencia y compromiso con la excelencia"
-  ];
-
   return (
     <section id="Método" className="py-20 bg-gradient-to-br from-[var(--cor-creme)] to-[var(--cor-off-white)] px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
