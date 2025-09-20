@@ -169,23 +169,23 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 h-full w-80 bg-white/95 backdrop-blur-xl shadow-2xl z-50 lg:hidden"
+            className="fixed top-0 left-0 h-screen w-screen bg-white backdrop-blur-xl shadow-2xl z-50 lg:hidden"
           >
-            <div className="p-8 pt-20">
+            <div className="p-8 pt-20 h-full w-full flex flex-col">
               <CloseMenuButton onClick={closeMenu} />
-              <nav className="flex flex-col space-y-6">
+              <nav className="flex flex-col space-y-6 flex-1 justify-center items-center">
                 {navLinks.map((link) => (
                   <motion.div
                     key={link.href}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 * navLinks.indexOf(link) }}
+                    transition={{ duration: 0.7, delay: 0.1 + 0.2 * navLinks.indexOf(link) }}
                     whileHover={{ scale: 1.05 }}
                   >
                     <Link
                       href={link.href}
                       onClick={closeMenu}
-                      className="text-lg font-light tracking-wide transition-colors duration-300 hover:text-[var(--cor-dourado-escuro)] block py-3 rounded-full focus:outline-none focus:ring-0"
+                      className="text-lg font-light tracking-wide transition-colors duration-300 hover:text-[var(--cor-dourado-escuro)] block py-3 focus:outline-none focus:ring-0"
                     >
                       {link.label}
                     </Link>
