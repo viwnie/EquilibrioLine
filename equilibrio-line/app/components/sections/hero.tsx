@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import HeroCarrossel from "@/app/assets/hero/Hero_EquilibrioLine.png";
+import HeroCarrossel from "../../../public/assets/hero/Hero_EquilibrioLine.png";
 
 function mulberry32(seed: number) {
   let t = seed >>> 0;

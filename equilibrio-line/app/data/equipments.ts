@@ -1,10 +1,10 @@
-import Cocoon from "@/app/assets/equipment/Cocoon_Wellness.webp";
-import MagnaShape from "@/app/assets/equipment/magnaShape.png";
-import Tecarplus from "@/app/assets/equipment/Tecarplus_448.png";
-import OLV10 from "@/app/assets/equipment/OLV-10.png";
-import Dermapen from "@/app/assets/equipment/Dermapen-4-Face.png";
-import H2O2 from "@/app/assets/equipment/H2-O2_bubble.png";
-import Tanita from "@/app/assets/equipment/Tanita 580P.png";
+import Cocoon from "../../public/assets/equipment/Cocoon_Wellness.webp";
+import MagnaShape from "../../public/assets/equipment/magnaShape.png";
+import Tecarplus from "../../public/assets/equipment/Tecarplus_448.png";
+import OLV10 from "../../public/assets/equipment/OLV-10.png";
+import Dermapen from "../../public/assets/equipment/Dermapen-4-Face.png";
+import H2O2 from "../../public/assets/equipment/H2-O2_bubble.png";
+import Tanita from "../../public/assets/equipment/Tanita 580P.png";
 
 export const EquipmentData = [
   {

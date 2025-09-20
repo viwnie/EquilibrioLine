@@ -1,20 +1,20 @@
 import { type StaticImageData } from "next/image";
 
-import AdelgazamientoImg from "@/app/assets/treatments/corporal/Adelgazamiento_localizado.png";
-import ReduccionCelulitisImg from "@/app/assets/treatments/corporal/Reduccion_de_celulitis.png";
-import ReduccionEstriasImg from "@/app/assets/treatments/corporal/Reduccion_de_estrias.png";
-import RemodelacionCorportalImg from "@/app/assets/treatments/corporal/Remodelacion_Corporal.png";
-import TonificacionMuscularImg from "@/app/assets/treatments/corporal/Tonificacion_muscular.png";
-import ReduccionMedidasImg from "@/app/assets/treatments/corporal/Reduccion_de_medidas.png";
-import TratamientoFlacidezImg from "@/app/assets/treatments/corporal/Tratamiento_de_flacidez.png";
+import AdelgazamientoImg from "../../public/assets/treatments/corporal/Adelgazamiento_localizado.png";
+import ReduccionCelulitisImg from "../../public/assets/treatments/corporal/Reduccion_de_celulitis.png";
+import ReduccionEstriasImg from "../../public/assets/treatments/corporal/Reduccion_de_estrias.png";
+import RemodelacionCorportalImg from "../../public/assets/treatments/corporal/Remodelacion_Corporal.png";
+import TonificacionMuscularImg from "../../public/assets/treatments/corporal/Tonificacion_muscular.png";
+import ReduccionMedidasImg from "../../public/assets/treatments/corporal/Reduccion_de_medidas.png";
+import TratamientoFlacidezImg from "../../public/assets/treatments/corporal/Tratamiento_de_flacidez.png";
 
-import RejuvenecimientoFacialImg from "@/app/assets/treatments/facial/Rejuvenecimiento_Facial.png";
-import ReafirmacionOvaloFacialImg from "@/app/assets/treatments/facial/Reafirmacion_ovalo_facial.png";
-import HidratacionProfundaImg from "@/app/assets/treatments/facial/Hidratacion_profunda.png";
-import TratamientoAntiacneImg from "@/app/assets/treatments/facial/Tratamientos_antiacne.png";
-import CorrecionManchasImg from "@/app/assets/treatments/facial/Correccion_manchas.png";
-import TratamientoAntiarrugasImg from "@/app/assets/treatments/facial/Tratamiento_antiarrugas.png";
-import LimpiezaFacialProfundaImg from "@/app/assets/treatments/facial/Limpieza_facial_profunda.png";
+import RejuvenecimientoFacialImg from "../../public/assets/treatments/facial/Rejuvenecimiento_Facial.png";
+import ReafirmacionOvaloFacialImg from "../../public/assets/treatments/facial/Reafirmacion_ovalo_facial.png";
+import HidratacionProfundaImg from "../../public/assets/treatments/facial/Hidratacion_profunda.png";
+import TratamientoAntiacneImg from "../../public/assets/treatments/facial/Tratamientos_antiacne.png";
+import CorrecionManchasImg from "../../public/assets/treatments/facial/Correccion_manchas.png";
+import TratamientoAntiarrugasImg from "../../public/assets/treatments/facial/Tratamiento_antiarrugas.png";
+import LimpiezaFacialProfundaImg from "../../public/assets/treatments/facial/Limpieza_facial_profunda.png";
 
 export interface Service {
   id: number;
