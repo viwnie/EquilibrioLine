@@ -132,7 +132,7 @@ export default function Tecnologia() {
           <p className="text-lg text-[var(--cor-charcoal)]/80 mb-8 max-w-2xl mx-auto">
             Descubre cómo nuestras tecnologías avanzadas pueden transformar tu experiencia de belleza
           </p>
-          <button className="px-8 py-3 bg-[var(--cor-charcoal)] text-white hover:bg-[var(--cor-dourado-escuro)] transition-all duration-300 text-sm font-medium tracking-wide uppercase">
+          <button onClick={() => window.location.href = '#contacto'} className="px-8 py-3 bg-[var(--cor-charcoal)] text-white hover:bg-[var(--cor-dourado-escuro)] transition-all duration-300 text-sm font-medium tracking-wide uppercase cursor-pointer">
             Consulta Personalizada
           </button>
         </motion.div>

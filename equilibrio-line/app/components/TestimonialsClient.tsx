@@ -148,7 +148,8 @@ const Testimonials = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-[var(--cor-dourado-claro)] text-white hover:bg-[var(--cor-dourado-escuro)] transition-all duration-300 text-sm font-medium tracking-wide uppercase rounded-full shadow-lg"
+            onClick={() => window.location.href = '#contacto'}
+            className="px-10 py-4 bg-[var(--cor-dourado-claro)] text-white hover:bg-[var(--cor-dourado-escuro)] transition-all duration-300 text-sm font-medium tracking-wide uppercase rounded-full shadow-lg cursor-pointer"
           >
             Reserva tu Consulta
           </motion.button>
