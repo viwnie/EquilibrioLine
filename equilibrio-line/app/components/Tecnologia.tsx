@@ -56,7 +56,7 @@ export default function Tecnologia() {
   ];
 
   return (
-    <section id="tecnologia" className="py-24 bg-[var(--cor-soft-gray)]">
+    <section id="equipos" className="py-24 bg-[var(--cor-soft-gray)]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
