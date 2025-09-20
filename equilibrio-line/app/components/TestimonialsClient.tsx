@@ -46,7 +46,7 @@ const testimonials: Testimonial[] = [
   }
 ];
 
-export default function Testimonials() {
+const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const nextTestimonial = () => {
@@ -65,7 +65,8 @@ export default function Testimonials() {
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
             className="text-3xl md:text-4xl font-light text-[var(--cor-charcoal)] mb-8"
             style={{ fontFamily: 'var(--font-adelia)' }}
           >
@@ -75,14 +76,16 @@ export default function Testimonials() {
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: "150px" }}
-            transition={{ duration: 1.2, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
             className="h-px bg-gradient-to-r from-transparent via-[var(--cor-dourado-claro)] to-transparent mx-auto mb-8"
           />
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
             className="text-xl text-[var(--cor-charcoal)]/70 max-w-3xl mx-auto leading-relaxed"
           >
             Descubre lo que nuestros clientes dicen sobre su transformación en Equilibrio Line
@@ -178,7 +181,8 @@ export default function Testimonials() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
           className="text-center mt-16"
         >
           <p className="text-lg text-[var(--cor-charcoal)]/80 mb-8 max-w-2xl mx-auto">
@@ -195,4 +199,6 @@ export default function Testimonials() {
       </div>
     </section>
   );
-}
+};
+
+export default Testimonials;

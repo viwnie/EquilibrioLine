@@ -2,7 +2,7 @@ import CarouselHome from './components/CarouselHome';
 import ServicesCarousel from './components/ServicesCarousel';
 import BrandStory from './components/BrandStory';
 import Tecnologia from './components/Tecnologia';
-import Testimonials from './components/Testimonials';
+import Testimonials from './components/TestimonialsClient';
 import Contacto from './components/Contacto';
 
 export default function Home() {

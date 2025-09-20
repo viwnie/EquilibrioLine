@@ -67,7 +67,7 @@ export default function CarouselHome() {
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 className="space-y-10"
               >
 
@@ -75,7 +75,7 @@ export default function CarouselHome() {
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 1 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
                   className="text-white/90 text-2xl md:text-3xl font-light tracking-wide max-w-3xl mx-auto leading-relaxed"
                 >
                   Bienvenida a Equilibrio Line
@@ -85,7 +85,7 @@ export default function CarouselHome() {
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 1.3 }}
+                  transition={{ duration: 0.6, delay: 0.45 }}
                   className="text-white/70 text-lg md:text-xl font-light max-w-4xl mx-auto leading-relaxed"
                 >
                   Especialistas en remodelación corporal y cuidado facial avanzado. Nuestro centro estético en Molina de Segura combina tecnología de última generación con un
@@ -96,7 +96,7 @@ export default function CarouselHome() {
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 1.6 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
                   className="pt-12"
                 >
                   <motion.div
@@ -122,7 +122,7 @@ export default function CarouselHome() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2.5 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
         className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10"
       >
         <div className="flex flex-col items-center space-y-2">

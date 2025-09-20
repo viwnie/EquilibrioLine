@@ -36,8 +36,28 @@ export default function QuienesSomos() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+           viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--cor-charcoal)] mb-6">
+            Tu centro de estética avanzada en{" "}
+            <span className="text-[var(--cor-dourado-escuro)]">Molina de Segura</span>
+          </h2>
+
+          <p className="text-lg sm:text-xl text-[var(--cor-marrom-luxo)] max-w-4xl mx-auto leading-relaxed">
+            En Equilibrio Line contamos con un equipo altamente cualificado y en
+            constante formación. Nuestra misión es ofrecer soluciones efectivas,
+            seguras y personalizadas a quienes desean mejorar su cuerpo, su piel
+            y su bienestar general.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+           viewport={{ once: true }}
           className="bg-gradient-to-r from-[var(--cor-bege-luxo)] to-[var(--cor-champagne)] rounded-3xl p-8 sm:p-12 border border-[var(--cor-dourado-claro)]"
         >
           <h3 className="text-2xl sm:text-3xl font-bold text-[var(--cor-charcoal)] mb-8 text-center">
@@ -50,8 +70,8 @@ export default function QuienesSomos() {
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                 viewport={{ once: true }}
                 className="flex items-start space-x-3"
               >
                 <div className="flex-shrink-0 w-6 h-6 bg-[var(--cor-dourado-claro)] rounded-full flex items-center justify-center mt-1 border border-[var(--cor-dourado-escuro)]">
