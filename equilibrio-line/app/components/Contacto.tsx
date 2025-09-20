@@ -79,16 +79,16 @@ export default function Contacto() {
   ];
 
   return (
-    <section id="contacto" className="py-32 bg-gradient-to-br from-[var(--cor-charcoal)] via-black to-[var(--cor-charcoal)]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="contacto" className="py-16 md:py-32 bg-gradient-to-br from-[var(--cor-charcoal)] via-black to-[var(--cor-charcoal)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-light text-white mb-8"
+            className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-4 md:mb-8 break-words"
             style={{ fontFamily: 'var(--font-adelia)' }}
           >
             Reserva tu Consulta
@@ -99,7 +99,7 @@ export default function Contacto() {
             whileInView={{ width: "150px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="h-px bg-gradient-to-r from-transparent via-[var(--cor-dourado-claro)] to-transparent mx-auto mb-8"
+            className="h-px bg-gradient-to-r from-transparent via-[var(--cor-dourado-claro)] to-transparent mx-auto mb-4 md:mb-8"
           />
 
           <motion.p
@@ -107,28 +107,28 @@ export default function Contacto() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed px-2"
           >
             Descubre qué tratamiento se adapta perfectamente a tus necesidades.
             Permítenos crear una experiencia personalizada para ti.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10"
+            className="bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/10 overflow-hidden"
           >
-            <h3 className="text-2xl font-light text-white mb-8" style={{ fontFamily: 'var(--font-adelia)' }}>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white mb-4 md:mb-8 break-words" style={{ fontFamily: 'var(--font-adelia)' }}>
               Formulario de Contacto
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label className="block text-white/80 text-sm font-medium mb-2">
                     Nombre Completo *
@@ -139,7 +139,7 @@ export default function Contacto() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300"
+                    className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
                     placeholder="Tu nombre"
                   />
                 </div>
@@ -154,13 +154,13 @@ export default function Contacto() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300"
+                    className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
                     placeholder="tu@email.com"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label className="block text-white/80 text-sm font-medium mb-2">
                     Teléfono
@@ -170,7 +170,7 @@ export default function Contacto() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300"
+                    className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
                     placeholder="+34 600 000 000"
                   />
                 </div>
@@ -183,11 +183,11 @@ export default function Contacto() {
                     name="treatment"
                     value={formData.treatment}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300"
+                    className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
                   >
                     <option value="" className="bg-[var(--cor-charcoal)]">Selecciona un tratamiento</option>
                     {treatments.map((treatment, index) => (
-                      <option key={index} value={treatment} className="bg-[var(--cor-charcoal)]">
+                      <option key={index} value={treatment} className="bg-[var(--cor-charcoal)] break-words">
                         {treatment}
                       </option>
                     ))}
@@ -203,8 +203,8 @@ export default function Contacto() {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 resize-none"
+                  rows={3}
+                  className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 resize-none text-sm sm:text-base"
                   placeholder="Cuéntanos sobre tus objetivos y expectativas..."
                 />
               </div>
@@ -213,7 +213,7 @@ export default function Contacto() {
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 bg-[var(--cor-dourado-claro)] text-white hover:bg-[var(--cor-dourado-escuro)] transition-all duration-300 text-sm font-medium tracking-wide uppercase rounded-lg shadow-lg"
+                className="w-full py-3 md:py-4 bg-[var(--cor-dourado-claro)] text-white hover:bg-[var(--cor-dourado-escuro)] transition-all duration-300 text-sm font-medium tracking-wide uppercase rounded-lg shadow-lg"
               >
                 Enviar Consulta
               </motion.button>
@@ -226,29 +226,29 @@ export default function Contacto() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10"
+            className="bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/10 overflow-hidden"
           >
-            <h3 className="text-2xl font-light text-white mb-8" style={{ fontFamily: 'var(--font-adelia)' }}>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white mb-4 md:mb-8 break-words" style={{ fontFamily: 'var(--font-adelia)' }}>
               Información de Contacto
             </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex items-start space-x-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10"
+                  className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10"
                 >
-                  <div className="text-[var(--cor-dourado-claro)] mt-1">
+                  <div className="text-[var(--cor-dourado-claro)] mt-1 flex-shrink-0">
                     {info.icon}
                   </div>
-                  <div>
-                    <p className="font-medium text-white mb-1">{info.label}</p>
-                    <p className="text-white/80">{info.value}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-medium text-white mb-1 text-sm sm:text-base">{info.label}</p>
+                    <p className="text-white/80 text-sm sm:text-base break-words">{info.value}</p>
                     {info.subvalue && (
-                      <p className="text-white/60 text-sm">{info.subvalue}</p>
+                      <p className="text-white/60 text-xs sm:text-sm break-words">{info.subvalue}</p>
                     )}
                   </div>
                 </motion.div>
