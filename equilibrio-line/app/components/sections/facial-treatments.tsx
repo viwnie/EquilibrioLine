@@ -1,10 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { tratamientosFaciales } from "../../data/treatments";
+import { FacialTreatmentsData } from "../../data/treatments";
 
-export default function TratamientosFaciales() {
-  const tratamientos = tratamientosFaciales;
+export default function FacialTreatments() {
+  const tratamientos = FacialTreatmentsData;
 
   return (
     <section className="py-20 bg-white px-4 sm:px-6 lg:px-8 overflow-hidden">

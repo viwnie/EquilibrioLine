@@ -1,21 +1,21 @@
 import { 
-  CarouselHome, 
+  Hero, 
   ServicesCarousel, 
   BrandStory, 
-  Tecnologia, 
+  Technology, 
   TestimonialsClient as Testimonials, 
-  Contacto 
+  Contact 
 } from './components/';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <CarouselHome />
+      <Hero />
       <ServicesCarousel />
       <BrandStory />
-      <Tecnologia />
+      <Technology />
       <Testimonials />
-      <Contacto />
+      <Contact />
     </main>
   );
 }

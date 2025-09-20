@@ -1,4 +1,4 @@
-export const tratamientosCorporales = [
+export const BodyTreatmentsData = [
   "Adelgazamiento localizado y general",
   "Reducción de celulitis",
   "Reducción de estrías",
@@ -6,7 +6,7 @@ export const tratamientosCorporales = [
   "Tonificación muscular y reafirmación"
 ];
 
-export const tratamientosFaciales = [
+export const FacialTreatmentsData = [
   "Rejuvenecimiento facial",
   "Reafirmación y redefinición del óvalo facial",
   "Eliminación de queloides",
@@ -21,6 +21,6 @@ export const tratamientosFaciales = [
 ];
 
 export const allTreatments = [
-  ...tratamientosCorporales,
-  ...tratamientosFaciales
+  ...BodyTreatmentsData,
+  ...FacialTreatmentsData
 ];

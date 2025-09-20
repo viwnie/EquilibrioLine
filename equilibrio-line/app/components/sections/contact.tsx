@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { allTreatments } from "../../data/treatments";
 import { contactInfoData } from "../../data/contactInfo";
 
-export default function Contacto() {
+export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     treatment: ''

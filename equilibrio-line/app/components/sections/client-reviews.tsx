@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { opiniones, type Opinion } from "../../data/opiniones";
 
-export default function OpinionesClientes() {
+export default function ClientReviews() {
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <svg

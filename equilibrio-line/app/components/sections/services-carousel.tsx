@@ -4,6 +4,56 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { corporalServices, facialServices, type Service } from "../../data/services";
 
+export default function ServicesCarousel() {
+  return (
+    <section className="py-32 bg-gradient-to-br from-white via-[var(--cor-soft-gray)] to-white" id="servicios">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-light text-[var(--cor-charcoal)] mb-8"
+            style={{ fontFamily: 'var(--font-adelia)' }}
+          >
+            Nuestros Servicios
+          </motion.h2>
+
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "150px" }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="h-px bg-gradient-to-r from-transparent via-[var(--cor-dourado-claro)] to-transparent mx-auto mb-8"
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-xl text-[var(--cor-charcoal)]/70 max-w-4xl mx-auto leading-relaxed"
+          >
+            En Equilibrio Line unimos tecnología de vanguardia y asesoramiento profesional para lograr un cuerpo más esbelto y tonificado, con resultados medibles y sostenibles.
+            <br className="hidden md:block" />
+            Nuestros protocolos faciales personalizados, combinando aparatología avanzada y cosmética profesional, potencian una piel radiante, sana y rejuvenecida.
+          </motion.p>
+        </div>
+
+        <InfiniteCarousel
+          services={corporalServices}
+          direction={-1}
+        />
+
+        <InfiniteCarousel
+          services={facialServices}
+          direction={1}
+        />
+      </div>
+    </section>
+  );
+}
 const InfiniteCarousel = ({
   services,
   direction = 1
@@ -113,54 +163,3 @@ const InfiniteCarousel = ({
     </div>
   );
 };
-
-export default function ServicesCarousel() {
-  return (
-    <section className="py-32 bg-gradient-to-br from-white via-[var(--cor-soft-gray)] to-white" id="servicios">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-light text-[var(--cor-charcoal)] mb-8"
-            style={{ fontFamily: 'var(--font-adelia)' }}
-          >
-            Nuestros Servicios
-          </motion.h2>
-
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "150px" }}
-            transition={{ duration: 1.2, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="h-px bg-gradient-to-r from-transparent via-[var(--cor-dourado-claro)] to-transparent mx-auto mb-8"
-          />
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-xl text-[var(--cor-charcoal)]/70 max-w-4xl mx-auto leading-relaxed"
-          >
-            En Equilibrio Line unimos tecnología de vanguardia y asesoramiento profesional para lograr un cuerpo más esbelto y tonificado, con resultados medibles y sostenibles.
-            <br className="hidden md:block" />
-            Nuestros protocolos faciales personalizados, combinando aparatología avanzada y cosmética profesional, potencian una piel radiante, sana y rejuvenecida.
-          </motion.p>
-        </div>
-
-        <InfiniteCarousel
-          services={corporalServices}
-          direction={-1}
-        />
-
-        <InfiniteCarousel
-          services={facialServices}
-          direction={1}
-        />
-      </div>
-    </section>
-  );
-}

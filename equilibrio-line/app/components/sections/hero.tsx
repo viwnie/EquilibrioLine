@@ -15,7 +15,7 @@ function mulberry32(seed: number) {
   };
 }
 
-export default function CarouselHome() {
+export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {

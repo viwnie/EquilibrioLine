@@ -1,10 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { tratamientosCorporales } from "../../data/treatments";
+import { BodyTreatmentsData } from "../../data/treatments";
 
-export default function TratamientosCorporales() {
-  const tratamientos = tratamientosCorporales;
+export default function BodyTreatments() {
+  const tratamientos = BodyTreatmentsData;
 
   return (
     <section id="Tratamientos" className="py-20 bg-gradient-to-br from-green-50 to-emerald-50 px-4 sm:px-6 lg:px-8">

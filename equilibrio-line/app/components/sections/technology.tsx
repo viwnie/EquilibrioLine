@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from 'next/image';
 import { equipamentos } from "../../data/equipamentos";
 
-export default function Tecnologia() {
+export default function Technology() {
 
   return (
     <section id="equipos" className="py-24 bg-[var(--cor-soft-gray)]">

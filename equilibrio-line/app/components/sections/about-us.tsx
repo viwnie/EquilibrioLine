@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { beneficios } from "../../data/beneficios";
 
-export default function QuienesSomos() {
+export default function AboutUs() {
   return (
     <section id="Método" className="py-20 bg-gradient-to-br from-[var(--cor-creme)] to-[var(--cor-off-white)] px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
