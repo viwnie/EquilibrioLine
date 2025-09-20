@@ -138,10 +138,9 @@ export default function Contacto() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/10 overflow-hidden h-fit"
           >
             <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-white mb-4 md:mb-6 break-words" style={{ fontFamily: 'var(--font-adelia)' }}>
@@ -200,10 +199,9 @@ export default function Contacto() {
 
           {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/10 overflow-hidden"
           >
             <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white mb-4 md:mb-8 break-words" style={{ fontFamily: 'var(--font-adelia)' }}>

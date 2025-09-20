@@ -3,23 +3,21 @@ import { motion } from "framer-motion";
 
 const BrandStory = () => {
    return (
-     <section className="py-24 bg-white" id="nosotros">
+     <section className="py-24 bg-white overflow-hidden" id="nosotros">
        <div className="max-w-6xl mx-auto px-6">
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
            {/* Left Content */}
            <motion.div
-             initial={{ opacity: 0, x: -50 }}
-             whileInView={{ opacity: 1, x: 0 }}
-             transition={{ duration: 0.6 }}
-             viewport={{ once: true }}
+             initial={{ opacity: 0, x: -30 }}
+             animate={{ opacity: 1, x: 0 }}
+             transition={{ duration: 0.6, ease: "easeOut" }}
              className="space-y-8"
            >
              <div>
                <motion.h2
                  initial={{ opacity: 0, y: 30 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 0.5, delay: 0.2 }}
-                 viewport={{ once: true }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
                  className="text-4xl md:text-5xl font-light text-[var(--cor-charcoal)] mb-6"
                  style={{ fontFamily: 'var(--font-adelia)' }}
                >
@@ -28,9 +26,8 @@ const BrandStory = () => {
 
                <motion.p
                  initial={{ opacity: 0, y: 30 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 0.5, delay: 0.4 }}
-                 viewport={{ once: true }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
                  className="text-lg text-[var(--cor-charcoal)]/80 leading-relaxed mb-8"
                >
                  Contamos con un equipo altamente cualificado y en constante formación. Nuestra misión es ofrecer soluciones efectivas, seguras y
@@ -52,9 +49,8 @@ const BrandStory = () => {
 
              <motion.div
                initial={{ opacity: 0, y: 30 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.5, delay: 0.6 }}
-               viewport={{ once: true }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
                className="space-y-6"
              >
                <div className="flex items-start space-x-4">
@@ -116,10 +112,9 @@ const BrandStory = () => {
 
            {/* Right Content - Video Element */}
            <motion.div
-             initial={{ opacity: 0, x: 50 }}
-             whileInView={{ opacity: 1, x: 0 }}
-             transition={{ duration: 0.6, delay: 0.3 }}
-             viewport={{ once: true }}
+             initial={{ opacity: 0, x: 30 }}
+             animate={{ opacity: 1, x: 0 }}
+             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
              className="relative"
            >
              <div className="relative h-96 bg-gradient-to-br from-[var(--cor-bege-luxo)] to-[var(--cor-champagne)] rounded-lg overflow-hidden">
