@@ -1,21 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { tratamientosFaciales } from "../../data/treatments";
 
 export default function TratamientosFaciales() {
-  const tratamientos = [
-    "Rejuvenecimiento facial",
-    "Reafirmación y redefinición del óvalo facial",
-    "Eliminación de queloides",
-    "Hidratación profunda",
-    "Tratamiento de piel rosácea",
-    "Tratamientos antiacné y post-acné",
-    "Corrección de manchas",
-    "Protocolos anti-edad",
-    "Tratamiento para alopecia",
-    "Porcelanización facial",
-    "Limpieza facial profunda con oxigenoterapia"
-  ];
+  const tratamientos = tratamientosFaciales;
 
   return (
     <section className="py-20 bg-white px-4 sm:px-6 lg:px-8 overflow-hidden">

@@ -1,14 +1,12 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { allTreatments } from "../../data/treatments";
 
 export default function Contacto() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    phone: '',
-    treatment: '',
-    message: ''
+    treatment: ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -21,20 +19,14 @@ export default function Contacto() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Construir mensagem para WhatsApp
     const message = `Hola 😊, soy ${formData.name}. Les escribo desde su página web porque estoy interesada en ${formData.treatment}. ¿Podrían darme más información, por favor?`;
     const whatsappUrl = `https://wa.me/34621665635?text=${encodeURIComponent(message)}`;
     
-    // Abrir WhatsApp
     window.open(whatsappUrl, '_blank');
     
-    // Limpar formulário
     setFormData({
       name: '',
-      email: '',
-      phone: '',
-      treatment: '',
-      message: ''
+      treatment: ''
     });
   };
 
@@ -82,27 +74,11 @@ export default function Contacto() {
     }
   ];
 
-  const treatments = [
-    "Adelgazamiento localizado y general",
-    "Reducción de celulitis",
-    "Reducción de estrías",
-    "Remodelación corporal integral",
-    "Tonificación muscular y reafirmación",
-    "Reducción de medidas",
-    "Tratamiento de flacidez",
-    "Rejuvenecimiento facial",
-    "Reafirmación y redefinición del óvalo facial",
-    "Hidratación profunda",
-    "Tratamientos antiacné y post-acné",
-    "Corrección de manchas",
-    "Tratamiento antiarrugas",
-    "Limpieza facial profunda"
-  ];
+  const treatments = allTreatments;
 
   return (
     <section id="contacto" className="py-16 md:py-32 bg-gradient-to-br from-[var(--cor-charcoal)] via-black to-[var(--cor-charcoal)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Section Header */}
         <div className="text-center mb-12 md:mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -136,7 +112,6 @@ export default function Contacto() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -197,7 +172,6 @@ export default function Contacto() {
             </form>
           </motion.div>
 
-          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
