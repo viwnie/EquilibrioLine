@@ -62,62 +62,66 @@ const InfiniteCarousel = ({
   direction?: number;
 }) => {
   const [isPaused, setIsPaused] = useState(false);
+  const [translateX, setTranslateX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
   const speed = 0.8;
-  const isInitialized = useRef(false);
 
   const duplicatedServices = [...services, ...services, ...services];
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    if (!isInitialized.current) {
-      container.scrollLeft = container.scrollWidth / 3;
-      isInitialized.current = true;
-    }
-
     const animate = () => {
-      if (!isPaused && container) {
-        const maxScroll = container.scrollWidth / 3;
-
-        container.scrollLeft += speed * direction;
-
-        if (direction > 0 && container.scrollLeft >= maxScroll * 2) {
-          container.scrollLeft = maxScroll;
-        } else if (direction < 0 && container.scrollLeft <= 0) {
-          container.scrollLeft = maxScroll;
-        }
-      }
-
       if (!isPaused) {
-        animationRef.current = requestAnimationFrame(animate);
+        setTranslateX(prev => {
+          const itemWidth = 344; // 320px (w-80) + 24px (gap-6)
+          const totalWidth = itemWidth * services.length;
+          
+          const newPosition = prev + (speed * direction);
+          
+          if (direction > 0 && newPosition >= 0) {
+            return -totalWidth;
+          } else if (direction < 0 && newPosition <= -totalWidth * 2) {
+            return -totalWidth;
+          }
+          
+          return newPosition;
+        });
       }
+      animationRef.current = requestAnimationFrame(animate);
     };
 
-    if (!isPaused) {
-      animationRef.current = requestAnimationFrame(animate);
-    }
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
       if (animationRef.current !== null) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isPaused, direction, speed]);
+  }, [isPaused, direction, speed, services.length]);
+
+  // Initialize position
+  useEffect(() => {
+    const itemWidth = 344;
+    const totalWidth = itemWidth * services.length;
+    setTranslateX(-totalWidth);
+  }, [services.length]);
 
   return (
     <div className="space-y-8">
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <div
           ref={containerRef}
-          className="relative overflow-hidden py-4"
+          className="relative py-4"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          <div className="flex gap-6 px-4">
+          <div 
+            className="flex gap-6 px-4 transition-none"
+            style={{ 
+              transform: `translateX(${translateX}px)`,
+              width: 'fit-content'
+            }}
+          >
             {duplicatedServices.map((service, index) => (
               <div
                 key={`${service.id}-${index}`}
