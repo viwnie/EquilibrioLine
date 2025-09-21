@@ -63,60 +63,54 @@ export default function FacialTreatments() {
 
 const TreatmentsCarousel = ({ treatments }: { treatments: string[] }) => {
   const [isPaused, setIsPaused] = useState(false);
+  const [translateX, setTranslateX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
   const speed = 0.5;
-  const isInitialized = useRef(false);
 
   const duplicatedTreatments = [...treatments, ...treatments, ...treatments];
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    if (!isInitialized.current) {
-      container.scrollLeft = container.scrollWidth / 3;
-      isInitialized.current = true;
-    }
-
     const animate = () => {
-      if (!isPaused && container) {
-        const maxScroll = container.scrollWidth / 3;
-
-        container.scrollLeft += speed;
-
-        if (container.scrollLeft >= maxScroll * 2) {
-          container.scrollLeft = maxScroll;
-        }
-      }
-
       if (!isPaused) {
-        animationRef.current = requestAnimationFrame(animate);
+        setTranslateX(prev => {
+          const itemWidth = 320; // 80 * 4 (w-80 = 320px)
+          const totalWidth = itemWidth * treatments.length;
+          
+          if (prev <= -totalWidth) {
+            return 0;
+          }
+          return prev - speed;
+        });
       }
+      animationRef.current = requestAnimationFrame(animate);
     };
 
-    if (!isPaused) {
-      animationRef.current = requestAnimationFrame(animate);
-    }
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
       if (animationRef.current !== null) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isPaused, speed]);
+  }, [isPaused, treatments.length, speed]);
 
   return (
     <div className="space-y-8 mb-12">
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <div
           ref={containerRef}
-          className="relative overflow-hidden py-4"
+          className="relative py-4"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          <div className="flex gap-4 px-4">
+          <div 
+            className="flex gap-4 px-4 transition-none"
+            style={{ 
+              transform: `translateX(${translateX}px)`,
+              width: 'fit-content'
+            }}
+          >
             {duplicatedTreatments.map((tratamiento, index) => (
               <div
                 key={`${tratamiento}-${index}`}
