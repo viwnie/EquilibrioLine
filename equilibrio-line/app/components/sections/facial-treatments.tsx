@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FacialTreatmentsData } from "../../data/treatments";
@@ -11,8 +12,9 @@ export default function FacialTreatments() {
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -26,36 +28,13 @@ export default function FacialTreatments() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12"
-        >
-          {tratamientos.map((tratamiento, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.05, ease: "easeOut" }}
-              className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 hover:shadow-md transition-all duration-300"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <p className="text-gray-800 font-medium text-sm">{tratamiento}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <TreatmentsCarousel treatments={tratamientos} />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="text-center"
         >
           <div className="bg-green-50 p-8 rounded-2xl mb-8">
@@ -81,3 +60,90 @@ export default function FacialTreatments() {
     </section>
   );
 }
+
+const TreatmentsCarousel = ({ treatments }: { treatments: string[] }) => {
+  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const speed = 0.5;
+  const isInitialized = useRef(false);
+
+  const duplicatedTreatments = [...treatments, ...treatments, ...treatments];
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (!isInitialized.current) {
+      container.scrollLeft = container.scrollWidth / 3;
+      isInitialized.current = true;
+    }
+
+    const animate = () => {
+      if (!isPaused && container) {
+        const maxScroll = container.scrollWidth / 3;
+
+        container.scrollLeft += speed;
+
+        if (container.scrollLeft >= maxScroll * 2) {
+          container.scrollLeft = maxScroll;
+        }
+      }
+
+      if (!isPaused) {
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    if (!isPaused) {
+      animationRef.current = requestAnimationFrame(animate);
+    }
+
+    return () => {
+      if (animationRef.current !== null) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isPaused, speed]);
+
+  return (
+    <div className="space-y-8 mb-12">
+      <div className="relative">
+        <div
+          ref={containerRef}
+          className="relative overflow-hidden py-4"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          <div className="flex gap-4 px-4">
+            {duplicatedTreatments.map((tratamiento, index) => (
+              <div
+                key={`${tratamiento}-${index}`}
+                className="flex-shrink-0 w-80"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 hover:shadow-md transition-all duration-300 h-20 flex items-center"
+                >
+                  <div className="flex items-center space-x-3 w-full">
+                    <div className="flex-shrink-0 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-800 font-medium text-sm">{tratamiento}</p>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none hidden md:block"></div>
+        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none hidden md:block"></div>
+      </div>
+    </div>
+  );
+};
