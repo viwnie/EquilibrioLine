@@ -14,14 +14,14 @@ export const EquipmentData = [
     categoria: "Termoterapia",
   },
   {
-    nombre: "ONDAS ELECTROMAGNETICAS",
-    descripcion: "tecnología avanzada que estimula contracciones musculares supra máximas para tonificar, reducir grasa localizada y mejorar la firmeza de la piel sin cirugía.",
+    nombre: "ONDAS ELECTROMAGNÉTICAS",
+    descripcion: "Tecnología avanzada que estimula contracciones musculares supra máximas para tonificar, reducir grasa localizada y mejorar la firmeza de la piel sin cirugía.",
     imagen: MagnaShape,
     categoria: "Radiofrecuencia",
   },
   {
     nombre: "RADIOFRECUENCIA",
-    descripcion: "terapias de radiofrecuencia que rejuvenecen, alivian dolor y mejoran la firmeza de la piel de forma no invasiva para corporal y facial.",
+    descripcion: "Terapias de radiofrecuencia que rejuvenecen, alivian dolor y mejoran la firmeza de la piel de forma no invasiva para corporal y facial.",
     imagen: Tecarplus,
     categoria: "Tecarterapia",
   },
