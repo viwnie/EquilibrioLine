@@ -68,6 +68,7 @@ export default function RootLayout({
     <html lang="es" className="h-full">
       <head>
         <StructuredData />
+        <meta name="facebook-domain-verification" content="wdcqqjuvdqmmpsivli044li7c540i8" />
         <script dangerouslySetInnerHTML={{ __html: `
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
