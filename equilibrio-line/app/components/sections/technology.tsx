@@ -37,13 +37,13 @@ export default function Technology() {
               viewport={{ once: true }}
               className="group"
             >
-              <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 h-full">
+              <motion.div 
+                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 h-full"
+                whileHover="hover"
+                initial="initial"
+              >
                 {/* Equipment Image */}
-                <motion.div 
-                  className="relative h-48 bg-gradient-to-br from-[var(--cor-bege-luxo)] to-[var(--cor-champagne)] flex items-center justify-center overflow-hidden"
-                  whileHover="hover"
-                  initial="initial"
-                >
+                <div className="relative h-48 bg-gradient-to-br from-[var(--cor-bege-luxo)] to-[var(--cor-champagne)] flex items-center justify-center overflow-hidden">
                   {/* Star Effect Background */}
                   <motion.div 
                     className="absolute inset-0"
@@ -106,7 +106,10 @@ export default function Technology() {
                   {equipo.imagen && (
                     <motion.div 
                       className="relative z-10"
-                      whileHover={{ scale: 1.1 }}
+                      variants={{
+                        initial: { scale: 1 },
+                        hover: { scale: 1.1 }
+                      }}
                       transition={{ duration: 0.5 }}
                     >
                       <Image
@@ -118,7 +121,7 @@ export default function Technology() {
                       />
                     </motion.div>
                   )}
-                </motion.div>
+                </div>
 
                 {/* Equipment Info */}
                 <div className="p-6">
@@ -129,7 +132,7 @@ export default function Technology() {
                     {equipo.descripcion}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
