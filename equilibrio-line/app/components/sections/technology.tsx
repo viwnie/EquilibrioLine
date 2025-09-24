@@ -38,7 +38,7 @@ export default function Technology() {
               className="group"
             >
               <motion.div 
-                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 h-full"
+                className="bg-white rounded-lg overflow-hidden shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05),0_2px_4px_-1px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_0_40px_-10px_rgba(212,175,55,0.2)] hover:bg-gradient-to-br hover:from-white hover:to-[var(--cor-champagne)]/5 transition-all duration-700 h-full"
                 whileHover="hover"
                 initial="initial"
               >
