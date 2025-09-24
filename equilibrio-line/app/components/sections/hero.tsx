@@ -108,7 +108,7 @@ export default function Hero() {
                       href="#contacto"
                       className="inline-block px-8 py-4 md:px-12 md:py-5 lg:px-16 lg:py-5 bg-transparent border-2 border-white/60 text-white hover:bg-white hover:text-black transition-all duration-700 text-sm md:text-base lg:text-lg font-light tracking-widest uppercase backdrop-blur-sm"
                     >
-                      Solicita tu primera
+                      Solicita tu primera 
                       <br className="sm:hidden" />
                       sesión gratuita
                     </Link>

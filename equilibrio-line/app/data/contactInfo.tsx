@@ -35,7 +35,7 @@ export const ContactInfoData = [
     ),
     label: "Email",
     value: "equilibriolinemolina@gmail.com",
-    subvalue: "Respuesta en 24h"
+    subvalue: "Respuesta en 48h"
   },
   {
     icon: (
@@ -44,7 +44,7 @@ export const ContactInfoData = [
       </svg>
     ),
     label: "Horarios",
-    value: "Lun - Vie: 7:00 - 22:00",
-    subvalue: "Sáb: 8:00 - 13:00"
+    value: "Lunes a Viernes: 08:00h - 21:30h",
+    subvalue: ""
   }
 ];

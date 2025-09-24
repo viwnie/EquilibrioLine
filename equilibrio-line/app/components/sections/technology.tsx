@@ -49,12 +49,6 @@ export default function Technology() {
                       className="object-contain filter group-hover:scale-110 transition-transform duration-500"
                     />
                   )}
-                  {/* Category Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-white/90 text-[var(--cor-charcoal)] px-3 py-1 rounded-full text-xs font-medium">
-                      {equipo.categoria}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Equipment Info */}
