@@ -73,9 +73,11 @@ export default function RootLayout({
     <html lang="es" className="h-full">
       <head>
         <StructuredData />
-        <meta name="facebook-domain-verification" content="wdcqqjuvdqmmpsivli044li7c540i8" />
-        <Script id="facebook-pixel" strategy="afterInteractive">
-          {`
+        {/* Removido: meta duplicada de facebook-domain-verification (já fornecida por metadata.verification) */}
+      </head>
+      <body className={`${adelia.variable} antialiased flex flex-col min-h-screen`}>
+        {/* Facebook Pixel - movido para o body para melhor compatibilidade em produção */}
+        <Script id="facebook-pixel" strategy="afterInteractive">{`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -86,15 +88,12 @@ export default function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1477042056937834');
             fbq('track', 'PageView');
-          `}
-        </Script>
+          `}</Script>
         <noscript>
-          <img height="1" width="1" style={{ display: "none" }}
+          <img alt="" height="1" width="1" style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=1477042056937834&ev=PageView&noscript=1"
           />
         </noscript>
-      </head>
-      <body className={`${adelia.variable} antialiased flex flex-col min-h-screen`}>
         <Header />
         <main className="flex-grow">
           {children}
