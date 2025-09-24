@@ -39,17 +39,86 @@ export default function Technology() {
             >
               <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 h-full">
                 {/* Equipment Image */}
-                <div className="relative h-48 bg-gradient-to-br from-[var(--cor-bege-luxo)] to-[var(--cor-champagne)] flex items-center justify-center">
+                <motion.div 
+                  className="relative h-48 bg-gradient-to-br from-[var(--cor-bege-luxo)] to-[var(--cor-champagne)] flex items-center justify-center overflow-hidden"
+                  whileHover="hover"
+                  initial="initial"
+                >
+                  {/* Star Effect Background */}
+                  <motion.div 
+                    className="absolute inset-0"
+                    variants={{
+                      initial: { opacity: 0 },
+                      hover: { opacity: 1 }
+                    }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {/* Animated stars */}
+                    {[...Array(8)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-white rounded-full"
+                        variants={{
+                          initial: { opacity: 0, scale: 0 },
+                          hover: {
+                            opacity: [0, 1, 0],
+                            scale: [0, 1.5, 0],
+                            transition: {
+                              duration: 2,
+                              delay: i * 0.2,
+                              repeat: Infinity,
+                              repeatDelay: 1
+                            }
+                          }
+                        }}
+                        style={{
+                          left: `${20 + (i % 4) * 20}%`,
+                          top: `${20 + Math.floor(i / 4) * 30}%`
+                        }}
+                      />
+                    ))}
+                    {/* Larger stars */}
+                    {[...Array(4)].map((_, i) => (
+                      <motion.div
+                        key={`large-${i}`}
+                        className="absolute w-2 h-2 bg-white rounded-full"
+                        variants={{
+                          initial: { opacity: 0, scale: 0 },
+                          hover: {
+                            opacity: [0, 0.8, 0],
+                            scale: [0, 2, 0],
+                            transition: {
+                              duration: 2.5,
+                              delay: i * 0.3 + 0.5,
+                              repeat: Infinity,
+                              repeatDelay: 1.5
+                            }
+                          }
+                        }}
+                        style={{
+                          left: `${15 + i * 25}%`,
+                          top: `${10 + i * 20}%`
+                        }}
+                      />
+                    ))}
+                  </motion.div>
+                  
                   {equipo.imagen && (
-                    <Image
-                      src={equipo.imagen}
-                      alt={equipo.nombre}
-                      width={equipo.nombre === "MagnaShape Quadra Core" ? 180 : 120}
-                      height={equipo.nombre === "MagnaShape Quadra Core" ? 180 : 120}
-                      className="object-contain filter group-hover:scale-110 transition-transform duration-500"
-                    />
+                    <motion.div 
+                      className="relative z-10"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Image
+                        src={equipo.imagen}
+                        alt={equipo.nombre}
+                        width={equipo.nombre === "ONDAS ELECTROMAGNETICAS" ? 180 : 120}
+                        height={equipo.nombre === "ONDAS ELECTROMAGNETICAS" ? 180 : 120}
+                        className="object-contain filter transition-transform duration-500"
+                      />
+                    </motion.div>
                   )}
-                </div>
+                </motion.div>
 
                 {/* Equipment Info */}
                 <div className="p-6">
