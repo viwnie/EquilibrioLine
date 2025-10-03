@@ -115,8 +115,8 @@ export default function Technology() {
                       <Image
                         src={equipo.imagen}
                         alt={equipo.nombre}
-                        width={equipo.nombre === "ONDAS ELECTROMAGNETICAS" ? 180 : 120}
-                        height={equipo.nombre === "ONDAS ELECTROMAGNETICAS" ? 180 : 120}
+                        width={equipo.nombre === "ONDAS ELECTROMAGNÉTICAS" ? 180 : 120}
+                        height={equipo.nombre === "ONDAS ELECTROMAGNÉTICAS" ? 180 : 120}
                         className="object-contain filter transition-transform duration-500"
                       />
                     </motion.div>

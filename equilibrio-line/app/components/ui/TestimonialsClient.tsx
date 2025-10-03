@@ -39,7 +39,7 @@ const testimonials: Testimonial[] = [
     id: 4,
     name: "Isabel López",
     treatment: "Tratamiento Integral",
-    content: "Llevo más de un año siendo cliente de Equilibrio Line y cada visita es una experiencia única. La atención personalizada y los equipos de última generación hacen la diferencia. Totalmente recomendado.",
+    content: "Hace tres meses que soy cliente de Equilibrio Line y cada visita sigue siendo una experiencia única. La atención personalizada y los equipos de última generación marcan la diferencia. ¡Totalmente recomendado!",
     rating: 5,
     image: "IL"
   }
