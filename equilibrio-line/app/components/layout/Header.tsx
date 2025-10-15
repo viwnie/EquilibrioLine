@@ -6,12 +6,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import logo from "../../../public/Equilibrio-line-logo.svg";
 
 const navLinks = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Equipos", href: "#equipos" },
-  { label: "Testimonios", href: "#testimonios" },
-  { label: "Contacto", href: "#contacto" },
-  { label: "Ubicación", href: "#ubicacion" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Equipos", href: "/#equipos" },
+  { label: "Testimonios", href: "/#testimonios" },
+  { label: "Contacto", href: "/#contacto" },
+  { label: "Ubicación", href: "/#ubicacion" },
 ];
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
@@ -87,7 +87,7 @@ const Logo = () => (
     className="relative focus:outline-none focus:ring-0"
   >
     <Link
-      href="#inicio"
+      href="/#inicio"
       className="flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer focus:outline-none focus:ring-0"
       style={{ outline: 'none', WebkitTapHighlightColor: 'transparent' }}
     >

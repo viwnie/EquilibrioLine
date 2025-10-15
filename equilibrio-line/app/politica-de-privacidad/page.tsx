@@ -2,8 +2,9 @@ import Link from "next/link";
 
 export default function PoliticaPrivacidadPage() {
   return (
-    <section className="max-w-4xl mx-auto px-6 py-12 text-white">
-      <h1 className="text-3xl font-light mb-6" style={{ fontFamily: 'var(--font-adelia)' }}>Política de privacidad</h1>
+    <section className="min-h-screen bg-gradient-to-br from-[var(--cor-charcoal)] to-black text-white pt-24 pb-16">
+      <div className="max-w-4xl mx-auto px-6">
+        <h1 className="text-3xl font-light mb-6" style={{ fontFamily: 'var(--font-adelia)' }}>Política de privacidad</h1>
 
       <p className="text-white/80 mb-4">
         En Equilibrio Line respetamos tu privacidad y nos comprometemos a proteger tus datos personales.
@@ -71,6 +72,7 @@ export default function PoliticaPrivacidadPage() {
         Utilizamos cookies y tecnologías similares para mejorar la experiencia. Puedes obtener más información en nuestra {" "}
         <Link href="/politica-de-cookies" className="text-[var(--cor-dourado-claro)] hover:underline">Política de cookies</Link>.
       </p>
+      </div>
     </section>
   );
 }

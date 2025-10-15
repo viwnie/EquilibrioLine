@@ -2,8 +2,9 @@ import Link from "next/link";
 
 export default function PoliticaCookiesPage() {
   return (
-    <section className="max-w-4xl mx-auto px-6 py-12 text-white">
-      <h1 className="text-3xl font-light mb-6" style={{ fontFamily: 'var(--font-adelia)' }}>Política de cookies</h1>
+    <section className="min-h-screen bg-gradient-to-br from-[var(--cor-charcoal)] to-black text-white pt-24 pb-16">
+      <div className="max-w-4xl mx-auto px-6">
+        <h1 className="text-3xl font-light mb-6" style={{ fontFamily: 'var(--font-adelia)' }}>Política de cookies</h1>
 
       <p className="text-white/80 mb-4">
         Esta política describe qué son las cookies, qué tipos utilizamos y cómo puedes gestionarlas.
@@ -46,6 +47,7 @@ export default function PoliticaCookiesPage() {
         Para conocer cómo tratamos datos personales y tus derechos, consulta nuestra {" "}
         <Link href="/politica-de-privacidad" className="text-[var(--cor-dourado-claro)] hover:underline">Política de privacidad</Link>.
       </p>
+      </div>
     </section>
   );
 }
