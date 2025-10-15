@@ -6,65 +6,81 @@ export default function PoliticaPrivacidadPage() {
       <div className="max-w-4xl mx-auto px-6">
         <h1 className="text-3xl font-light mb-6" style={{ fontFamily: 'var(--font-adelia)' }}>Política de privacidad</h1>
 
-      <p className="text-white/80 mb-4">
-        En Equilibrio Line respetamos tu privacidad y nos comprometemos a proteger tus datos personales.
-        Esta política explica cómo tratamos tus datos conforme al Reglamento (UE) 2016/679 (RGPD) y la
-        Ley Orgánica 3/2018 (LOPDGDD).
+      <p className="text-white/80 mb-6">
+        A través del presente aviso, INTEREX 2003, S.L. informa a los usuarios del sitio web 
+        'www.equilibrioline.com', en cumplimiento del artículo 5 de la Ley 15/1999, de 13 de 
+        diciembre, de Protección de datos, acerca de su política de protección de datos personales. 
+        INTEREX 2003, S.L. figura inscrita en el Registro Mercantil de Murcia, Hoja MU-49488 Tomo 
+        2020 Folio 66, con C.I.F. B-73263303
       </p>
 
-      <div className="bg-white/5 border border-white/10 rounded-lg p-4 mb-6 text-sm">
-        <p>
-          También puedes consultar o descargar la versión en documento: {" "}
-          <Link href="/politica-de-privacidad.docx" className="text-[var(--cor-dourado-claro)] hover:underline">Política de privacidad (DOCX)</Link>
-        </p>
-      </div>
-
-      <h2 className="text-xl font-semibold mt-8 mb-3">Responsable del tratamiento</h2>
-      <p className="text-white/80">
-        Interex S.L. — Email: equilibriolinemolina@gmail.com — Dirección: Molina de Segura, Murcia (España).
+      <p className="text-white/80 mb-6">
+        INTEREX 2003, S.L. hace accesibles desde este sitio web a través de enlaces de hipertexto. La 
+        inclusión de vínculos con otros sitios web no implica la aprobación de sus contenidos por parte 
+        de INTEREX 2003, S.L. ni la existencia de ningún tipo de asociación entre INTEREX 2003, S.L. y 
+        sus titulares.
       </p>
 
-      <h2 className="text-xl font-semibold mt-8 mb-3">Datos que tratamos</h2>
-      <p className="text-white/80">
-        Identificativos (nombre), contacto (teléfono, email) y preferencias de tratamiento indicadas en el formulario.
+      <p className="text-white/80 mb-6">
+        La copia, reproducción, transmisión, distribución o publicación de los contenidos de este sitio 
+        web están prohibidos sin el previo consentimiento expreso de INTEREX 2003, S.L. Se permite la 
+        reproducción y almacenamiento temporal de los contenidos del sitio web en tanto ello sea 
+        estrictamente necesario para el uso y visualización del sitio web desde un ordenador personal.
       </p>
 
-      <h2 className="text-xl font-semibold mt-8 mb-3">Finalidades y base jurídica</h2>
-      <ul className="list-disc pl-6 text-white/80">
-        <li>Gestionar tus consultas y comunicaciones — Base jurídica: consentimiento (art. 6.1.a RGPD).</li>
-        <li>Programación de citas y seguimiento — Base jurídica: consentimiento y/o interés legítimo (art. 6.1.f).</li>
-        <li>Envío puntual de información sobre servicios — Base jurídica: consentimiento. Puedes revocarlo en cualquier momento.</li>
-      </ul>
-
-      <h2 className="text-xl font-semibold mt-8 mb-3">Conservación</h2>
-      <p className="text-white/80">
-        Los datos se conservarán durante el tiempo necesario para atender tu solicitud y, en su caso, durante un máximo
-        de 12 meses para comunicaciones relacionadas, salvo que solicites su supresión o exista obligación legal distinta.
+      <p className="text-white/80 mb-6">
+        El usuario puede acceder a la información del sitio web sin necesidad de proporcionar ningún 
+        dato de carácter personal. No obstante, en el supuesto de que el usuario realizara alguna 
+        consulta por correo electrónico, para lo cual deberá rellenar un formulario, la información de 
+        carácter personal facilitada por usted en éste, será incorporada y tratada en un fichero cuyo 
+        destinatario y resposable es INTEREX 2003, S.L. , con domicilio en Valencia, C/ Estación, 27, 
+        30500 Molina de Segura /Murcia) y cuya finalidad es facilitarle la información por usted 
+        solicitada, así como beneficiarse de las ventajas asociadas a la cumplimentación del mismo. 
+        INTEREX 2003, S.L. actúa como responsable del fichero, con el mismo domicilio señalado 
+        anteriormente, con la finalidad de hacerle llegar ofertas comerciales ya sea por correo o través 
+        de canales electrónicos.
       </p>
 
-      <h2 className="text-xl font-semibold mt-8 mb-3">Destinatarios</h2>
-      <p className="text-white/80">
-        No se ceden datos a terceros, salvo obligación legal. Podrán acceder proveedores que prestan servicios al Titular
-        (por ejemplo, alojamiento web, correo electrónico, analítica) bajo contratos de encargo de tratamiento.
+      <p className="text-white/80 mb-6">
+        Al rellenar el formulario de la web, para solicitar una consulta sobre un tratamiento específico, 
+        el usuario autoriza expresamente la suscripción a nuestras comunicaciones con la finalidad de 
+        enviarle información publicitaria y promocional, que resulta de su interés/motivo de consulta, 
+        consintiendo el envío de dicha información por cualquier medio, incluidos medios electrónicos. 
+        (SMS/WhatsApp/Newsletters/llamada, correo electrónico)
       </p>
 
-      <h2 className="text-xl font-semibold mt-8 mb-3">Transferencias internacionales</h2>
-      <p className="text-white/80">
-        En caso de utilizar herramientas con servidores fuera del EEE, se garantizarán salvaguardas adecuadas como cláusulas
-        contractuales tipo o proveedores adheridos a marcos de adecuación.
+      <p className="text-white/80 mb-6">
+        En cumplimiento de lo dispuesto en la Ley 34/2002 de 11 de julio, de Servicios de Sociedad de 
+        la Información y de Comercio Electrónico los usuarios podrán revocar el consentimiento 
+        prestado en cualquier momento a través del enlace Unsubscribed que aparece en la parte 
+        inferior de la newsletter».
       </p>
 
-      <h2 className="text-xl font-semibold mt-8 mb-3">Derechos</h2>
-      <p className="text-white/80">
-        Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad enviando un
-        email a <a href="mailto:equilibriolinemolina@gmail.com" className="text-[var(--cor-dourado-claro)]">equilibriolinemolina@gmail.com</a>.
-        Si consideras que no se ha atendido adecuadamente, puedes reclamar ante la Agencia Española de Protección de Datos.
+      <p className="text-white/80 mb-6">
+        Los interesados podrán ejercitar gratuitamente los derechos de acceso e información, 
+        rectificación, cancelación, portabilidad, supresión o, en su caso, oposición de sus datos, en los 
+        términos especificados en el Reglamento General de Protección de Datos de Carácter Personal, 
+        conforme al procedimiento legalmente establecido.
       </p>
 
-      <h2 className="text-xl font-semibold mt-8 mb-3">Seguridad</h2>
-      <p className="text-white/80">
-        Aplicamos medidas técnicas y organizativas apropiadas para proteger tus datos contra accesos no autorizados,
-        pérdida o alteración.
+      <h2 className="text-xl font-semibold mt-8 mb-3">Para ejercer estos derechos</h2>
+      <p className="text-white/80 mb-6">
+        Enviar su solicitud al domicilio: INTEREX 2003, S.L., C/ Estación, 27, Bajo, 30500, Molina de 
+        Segura acompañada de una fotocopia de su D.N.I, y en la que especificará cuál de éstos solicita 
+        sea satisfecho.
+      </p>
+
+      <h2 className="text-xl font-semibold mt-8 mb-3">Medidas de seguridad</h2>
+      <p className="text-white/80 mb-6">
+        INTEREX 2003, S.L. ha adoptado las medidas de índole técnica y organizativa necesarias que 
+        garanticen la seguridad de los datos y eviten su alteración, pérdida, tratamiento o acceso no 
+        autorizado, habida cuenta del estado de la tecnología, la naturaleza de los datos almacenados 
+        y los riesgos a que están expuestos, ya provengan de la acción humana o del medio físico o 
+        natural. Se adoptan medidas de índole técnico y organizativas que persiguen alcanzar los 
+        objetivos básicos en materia de seguridad, tales como la confidencialidad, entendida como la 
+        limitación de acceso a la información por personas no autorizadas; la integridad, entendida 
+        como el mantenimiento de información fiable y con calidad, y la disponibilidad, entendida 
+        como la garantía de acceso al sistema de información por solicitud de un usuario autorizado.
       </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-3">Cookies</h2>
