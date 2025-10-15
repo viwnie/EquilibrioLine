@@ -13,7 +13,7 @@ export default function AvisoLegalPage() {
         <h2 className="text-xl font-semibold mt-8 mb-3">Datos identificativos</h2>
         <p className="text-white/80">
           - Titular: Interex S.L.<br/>
-          - Email de contacto: equilibriolinemolina@gmail.com<br/>
+          - Email de contacto: info@equilibrioline.com<br/>
           - Dirección: Molina de Segura, Murcia (España).<br/>
           - Finalidad del sitio: Información sobre servicios y contacto.
         </p>

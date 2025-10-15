@@ -34,7 +34,7 @@ export const ContactInfoData = [
       </svg>
     ),
     label: "Email",
-    value: "equilibriolinemolina@gmail.com",
+    value: "info@equilibrioline.com",
     subvalue: "Respuesta en 48h"
   },
   {

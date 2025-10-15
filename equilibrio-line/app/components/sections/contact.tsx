@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect, forwardRef, useImperativeHandle } from "react";
 import { motion } from "framer-motion";
 import { allTreatments } from "../../data/treatments";
 import { ContactInfoData } from "../../data/contactInfo";
@@ -29,7 +29,11 @@ interface FormTouched {
   privacy: boolean;
 }
 
-export default function Contact() {
+export interface ContactRef {
+  activateWhatsAppMode: () => void;
+}
+
+const Contact = forwardRef<ContactRef>((props, ref) => {
   const [isWhatsAppMode, setIsWhatsAppMode] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -54,6 +58,13 @@ export default function Contact() {
     message: '',
     type: 'success' as 'success' | 'error'
   });
+
+  // Expor função para ativar modo WhatsApp externamente
+  useImperativeHandle(ref, () => ({
+    activateWhatsAppMode: () => {
+      setIsWhatsAppMode(true);
+    }
+  }));
 
   // Hook para debounce dos dados do formulário
   useEffect(() => {
@@ -228,7 +239,7 @@ export default function Contact() {
       formDataToSend.append('_autoresponse', 'Gracias por contactarnos. Hemos recibido tu consulta y te responderemos pronto.');
 
 
-      const response = await fetch('https://formsubmit.co/42cf47a229d2ad960a727fa425d4f40c', {
+      const response = await fetch('https://formsubmit.co/info@equilibrioline.com', {
         method: 'POST',
         body: formDataToSend
       });
@@ -571,7 +582,7 @@ export default function Contact() {
                   y consiento el tratamiento de mis datos para gestionar mi solicitud.
                 </label>
               </div>
-              
+
               {/* Error message for privacy policy */}
               {!isWhatsAppMode && formTouched.privacy && formErrors.privacy && (
                 <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
@@ -675,4 +686,8 @@ export default function Contact() {
       </div>
     </section>
   );
-}
+});
+
+Contact.displayName = 'Contact';
+
+export default Contact;
