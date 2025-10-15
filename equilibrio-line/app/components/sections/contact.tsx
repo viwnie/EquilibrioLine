@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { allTreatments } from "../../data/treatments";
 import { ContactInfoData } from "../../data/contactInfo";
+import Toast from "../ui/Toast";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,25 @@ export default function Contact() {
     email: '',
     treatment: ''
   });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState({
+    isVisible: false,
+    message: '',
+    type: 'success' as 'success' | 'error'
+  });
+
+  const showToast = (message: string, type: 'success' | 'error') => {
+    setToast({
+      isVisible: true,
+      message,
+      type
+    });
+  };
+
+  const hideToast = () => {
+    setToast(prev => ({ ...prev, isVisible: false }));
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -21,6 +41,7 @@ export default function Contact() {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     
     try {
       const formElement = e.target as HTMLFormElement;
@@ -32,8 +53,7 @@ export default function Contact() {
       });
       
       if (response.ok) {
-        // Show success message or notification here
-        alert('¡Gracias! Tu consulta ha sido enviada correctamente. Te responderemos pronto.');
+        showToast('¡Gracias! Tu consulta ha sido enviada correctamente. Te responderemos pronto.', 'success');
         
         // Clear form
         setFormData({
@@ -43,11 +63,13 @@ export default function Contact() {
           treatment: ''
         });
       } else {
-        alert('Hubo un error al enviar tu consulta. Por favor, intenta nuevamente.');
+        showToast('Hubo un error al enviar tu consulta. Por favor, intenta nuevamente.', 'error');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('Hubo un error al enviar tu consulta. Por favor, intenta nuevamente.');
+      showToast('Hubo un error al enviar tu consulta. Por favor, intenta nuevamente.', 'error');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -206,14 +228,31 @@ export default function Contact() {
               <div className="space-y-3">
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 md:py-4 bg-[var(--cor-dourado-claro)] text-white hover:bg-[var(--cor-dourado-escuro)] transition-all duration-300 text-sm font-medium tracking-wide uppercase rounded-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                  disabled={isLoading}
+                  whileHover={{ scale: isLoading ? 1 : 1.02 }}
+                  whileTap={{ scale: isLoading ? 1 : 0.98 }}
+                  className={`w-full py-3 md:py-4 transition-all duration-300 text-sm font-medium tracking-wide uppercase rounded-lg shadow-lg flex items-center justify-center gap-2 ${
+                    isLoading 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-[var(--cor-dourado-claro)] text-white hover:bg-[var(--cor-dourado-escuro)] cursor-pointer'
+                  }`}
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                  Consultar con un Especialista
+                  {isLoading ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                      Enviar Consulta
+                    </>
+                  )}
                 </motion.button>
 
                 <motion.button
@@ -267,6 +306,13 @@ export default function Contact() {
               ))}
             </div>
           </motion.div>
+
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            isVisible={toast.isVisible}
+            onClose={hideToast}
+          />
         </div>
       </div>
     </section>
