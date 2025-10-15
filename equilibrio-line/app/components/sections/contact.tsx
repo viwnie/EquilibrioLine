@@ -35,6 +35,7 @@ export default function Contact() {
     email: '',
     treatment: ''
   });
+  const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
 
   const [formTouched, setFormTouched] = useState<FormTouched>({
     name: false,
@@ -113,9 +114,10 @@ export default function Contact() {
         debouncedFormData.name.trim() !== '' &&
         debouncedFormData.phone.trim() !== '' &&
         debouncedFormData.email.trim() !== '' &&
-        debouncedFormData.treatment !== '';
+        debouncedFormData.treatment !== '' &&
+        acceptedPrivacy;
     }
-  }, [formErrors, debouncedFormData, isWhatsAppMode]);
+  }, [formErrors, debouncedFormData, isWhatsAppMode, acceptedPrivacy]);
 
   // Máscara para telefone español
   const formatPhone = useCallback((value: string): string => {
@@ -231,6 +233,7 @@ export default function Contact() {
           email: '',
           treatment: ''
         });
+        setAcceptedPrivacy(false);
 
         // Reset touched state
         setFormTouched({
@@ -533,6 +536,23 @@ export default function Contact() {
                     {formErrors.treatment}
                   </p>
                 )}
+              </div>
+
+              {/* Consentimiento de privacidad */}
+              <div className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-lg p-3">
+                <input
+                  id="privacy-consent"
+                  type="checkbox"
+                  checked={acceptedPrivacy}
+                  onChange={(e) => setAcceptedPrivacy(e.target.checked)}
+                  className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 cursor-pointer"
+                  disabled={isWhatsAppMode}
+                />
+                <label htmlFor="privacy-consent" className="text-xs sm:text-sm text-white/80">
+                  He leído y acepto la {" "}
+                  <a href="/politica-de-privacidad" className="text-[var(--cor-dourado-claro)] hover:underline" target="_blank" rel="noopener noreferrer">Política de privacidad</a>{" "}
+                  y consiento el tratamiento de mis datos para gestionar mi solicitud.
+                </label>
               </div>
 
               <div className="space-y-3">

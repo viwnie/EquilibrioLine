@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -47,6 +48,19 @@ const Footer = () => {
               />
             </div>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Bottom Links */}
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-3 lg:gap-6 text-xs">
+            <Link href="/aviso-legal" className="text-white/80 hover:text-[var(--cor-dourado-claro)] transition-colors">Aviso legal</Link>
+            <span className="hidden lg:block text-white/30">•</span>
+            <Link href="/politica-de-privacidad" className="text-white/80 hover:text-[var(--cor-dourado-claro)] transition-colors">Política de privacidad</Link>
+            <span className="hidden lg:block text-white/30">•</span>
+            <Link href="/politica-de-cookies" className="text-white/80 hover:text-[var(--cor-dourado-claro)] transition-colors">Política de cookies</Link>
+          </div>
         </div>
       </div>
 
