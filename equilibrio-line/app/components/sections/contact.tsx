@@ -7,6 +7,8 @@ import { ContactInfoData } from "../../data/contactInfo";
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
+    phone: '',
+    email: '',
     treatment: ''
   });
 
@@ -17,7 +19,39 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const formElement = e.target as HTMLFormElement;
+      const formDataToSend = new FormData(formElement);
+      
+      const response = await fetch('https://formsubmit.co/ce69530710a07ca84379de8515040ca2', {
+        method: 'POST',
+        body: formDataToSend
+      });
+      
+      if (response.ok) {
+        // Show success message or notification here
+        alert('¡Gracias! Tu consulta ha sido enviada correctamente. Te responderemos pronto.');
+        
+        // Clear form
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          treatment: ''
+        });
+      } else {
+        alert('Hubo un error al enviar tu consulta. Por favor, intenta nuevamente.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Hubo un error al enviar tu consulta. Por favor, intenta nuevamente.');
+    }
+  };
+
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     const message = `Hola 😊, soy ${formData.name}. Les escribo desde su página web porque estoy interesada en ${formData.treatment}. ¿Podrían darme más información, por favor?`;
@@ -27,6 +61,24 @@ export default function Contact() {
     
     setFormData({
       name: '',
+      phone: '',
+      email: '',
+      treatment: ''
+    });
+  };
+
+  const handleSpecialistConsultation = (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent form submission
+    
+    const message = `Hola 😊, soy ${formData.name}. Me gustaría agendar una consulta con un especialista para que me asesore sobre qué tratamientos son los ideales para mí. Mi teléfono es ${formData.phone} y mi email es ${formData.email}. ¡Gracias!`;
+    const whatsappUrl = `https://wa.me/34621665635?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, '_blank');
+    
+    setFormData({
+      name: '',
+      phone: '',
+      email: '',
       treatment: ''
     });
   };
@@ -79,7 +131,13 @@ export default function Contact() {
               Formulario de Contacto
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+            <form onSubmit={handleFormSubmit} className="space-y-4 md:space-y-6">
+              {/* Hidden FormSubmit configurations */}
+              <input type="hidden" name="_subject" value="Nueva consulta desde Equilibrio Line" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_autoresponse" value="Gracias por contactarnos. Hemos recibido tu consulta y te responderemos pronto." />
+              
               <div>
                 <label className="block text-white/80 text-sm font-medium mb-2">
                   Nombre Completo *
@@ -92,6 +150,36 @@ export default function Contact() {
                   required
                   className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
                   placeholder="Tu nombre"
+                />
+              </div>
+
+              <div>
+                <label className="block text-white/80 text-sm font-medium mb-2">
+                  Teléfono *
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
+                  placeholder="Tu número de teléfono"
+                />
+              </div>
+
+              <div>
+                <label className="block text-white/80 text-sm font-medium mb-2">
+                  Correo Electrónico *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
+                  placeholder="tu@email.com"
                 />
               </div>
 
@@ -115,17 +203,32 @@ export default function Contact() {
                 </select>
               </div>
 
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-3 md:py-4 bg-[var(--cor-dourado-claro)] text-white hover:bg-[var(--cor-dourado-escuro)] transition-all duration-300 text-sm font-medium tracking-wide uppercase rounded-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.015-1.04 2.475 0 1.46 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0024.003 11.89c-.002-6.552-5.437-11.89-12.003-11.89z"/>
-                </svg>
-                Contáctanos
-              </motion.button>
+              <div className="space-y-3">
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 md:py-4 bg-[var(--cor-dourado-claro)] text-white hover:bg-[var(--cor-dourado-escuro)] transition-all duration-300 text-sm font-medium tracking-wide uppercase rounded-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                  Consultar con un Especialista
+                </motion.button>
+
+                <motion.button
+                  type="button"
+                  onClick={handleWhatsAppSubmit}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 md:py-4 bg-green-600 text-white hover:bg-green-700 transition-all duration-300 text-sm font-medium tracking-wide uppercase rounded-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.015-1.04 2.475 0 1.46 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0024.003 11.89c-.002-6.552-5.437-11.89-12.003-11.89z"/>
+                  </svg>
+                  Contáctanos por WhatsApp
+                </motion.button>
+              </div>
             </form>
           </motion.div>
 
