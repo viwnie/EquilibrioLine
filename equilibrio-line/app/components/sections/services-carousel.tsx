@@ -13,7 +13,6 @@ export default function ServicesCarousel() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
             className="text-3xl md:text-4xl font-light text-[var(--cor-charcoal)] mb-8"
             style={{ fontFamily: 'var(--font-adelia)' }}
           >
@@ -24,7 +23,6 @@ export default function ServicesCarousel() {
             initial={{ width: 0 }}
             whileInView={{ width: "150px" }}
             transition={{ duration: 1.2, delay: 0.3 }}
-            viewport={{ once: true }}
             className="h-px bg-gradient-to-r from-transparent via-[var(--cor-dourado-claro)] to-transparent mx-auto mb-8"
           />
 
@@ -32,7 +30,6 @@ export default function ServicesCarousel() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            viewport={{ once: true }}
             className="text-xl text-[var(--cor-charcoal)]/70 max-w-4xl mx-auto leading-relaxed"
           >
             En Equilibrio Line unimos tecnología de vanguardia y asesoramiento profesional para lograr un cuerpo más esbelto y tonificado, con resultados medibles y sostenibles.
@@ -41,19 +38,13 @@ export default function ServicesCarousel() {
           </motion.p>
         </div>
 
-        <InfiniteCarousel
-          services={corporalServices}
-          direction={-1}
-        />
-
-        <InfiniteCarousel
-          services={facialServices}
-          direction={1}
-        />
+        <InfiniteCarousel services={corporalServices} direction={-1} />
+        <InfiniteCarousel services={facialServices} direction={1} />
       </div>
     </section>
   );
 }
+
 const InfiniteCarousel = ({
   services,
   direction = 1
@@ -61,66 +52,71 @@ const InfiniteCarousel = ({
   services: Service[];
   direction?: number;
 }) => {
-  const [isPaused, setIsPaused] = useState(false);
-  const [translateX, setTranslateX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
+  const positionRef = useRef<number>(-services.length * 344);
+  const [isPaused, setIsPaused] = useState(false);
   const speed = 0.8;
-
   const duplicatedServices = [...services, ...services, ...services];
 
-  useEffect(() => {
+  const startAnimation = () => {
+    const container = containerRef.current;
+    if (!container) return;
+
     const animate = () => {
-      if (!isPaused) {
-        setTranslateX(prev => {
-          const itemWidth = 344; // 320px (w-80) + 24px (gap-6)
-          const totalWidth = itemWidth * services.length;
-          
-          const newPosition = prev + (speed * direction);
-          
-          if (direction > 0 && newPosition >= 0) {
-            return -totalWidth;
-          } else if (direction < 0 && newPosition <= -totalWidth * 2) {
-            return -totalWidth;
-          }
-          
-          return newPosition;
-        });
+      const itemWidth = 344;
+      const totalWidth = itemWidth * services.length;
+      positionRef.current += speed * direction;
+
+      if (direction > 0 && positionRef.current >= 0) {
+        positionRef.current = -totalWidth;
+      } else if (direction < 0 && positionRef.current <= -totalWidth * 2) {
+        positionRef.current = -totalWidth;
       }
+
+      container.style.transform = `translate3d(${positionRef.current}px, 0, 0)`;
       animationRef.current = requestAnimationFrame(animate);
     };
 
     animationRef.current = requestAnimationFrame(animate);
+  };
 
-    return () => {
-      if (animationRef.current !== null) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [isPaused, direction, speed, services.length]);
+  const stopAnimation = () => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+  };
 
-  // Initialize position
   useEffect(() => {
-    const itemWidth = 344;
-    const totalWidth = itemWidth * services.length;
-    setTranslateX(-totalWidth);
-  }, [services.length]);
+    if (!isPaused) startAnimation();
+    else stopAnimation();
+    return () => stopAnimation();
+  }, [isPaused, direction]);
+
+  useEffect(() => {
+    const section = containerRef.current?.closest("section");
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsPaused(!entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="space-y-8">
       <div className="relative overflow-hidden">
         <div
-          ref={containerRef}
-          className="relative py-4"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          className="relative py-4"
         >
-          <div 
-            className="flex gap-6 px-4 transition-none"
-            style={{ 
-              transform: `translateX(${translateX}px)`,
-              width: 'fit-content'
-            }}
+          <div
+            ref={containerRef}
+            className="flex gap-6 px-4 transition-none will-change-transform"
+            style={{ width: 'fit-content' }}
           >
             {duplicatedServices.map((service, index) => (
               <div
