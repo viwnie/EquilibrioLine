@@ -239,7 +239,7 @@ const Contact = forwardRef<ContactRef>((props, ref) => {
       formDataToSend.append('_autoresponse', 'Gracias por contactarnos. Hemos recibido tu consulta y te responderemos pronto.');
 
 
-      const response = await fetch('https://formsubmit.co/info@equilibrioline.com', {
+      const response = await fetch('https://formsubmit.co/c62cb4a5b23edf2ca26e9ff7488f4fbf', {
         method: 'POST',
         body: formDataToSend
       });
