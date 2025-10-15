@@ -92,7 +92,7 @@ const InfiniteCarousel = ({
     if (!isPaused) startAnimation();
     else stopAnimation();
     return () => stopAnimation();
-  }, [isPaused, direction]);
+  }, [isPaused, direction, startAnimation]);
 
   useEffect(() => {
     const section = containerRef.current?.closest("section");

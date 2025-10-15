@@ -8,7 +8,7 @@ export default function PoliticaPrivacidadPage() {
 
       <p className="text-white/80 mb-6">
         A través del presente aviso, INTEREX 2003, S.L. informa a los usuarios del sitio web 
-        'www.equilibrioline.com', en cumplimiento del artículo 5 de la Ley 15/1999, de 13 de 
+        &apos;www.equilibrioline.com&apos;, en cumplimiento del artículo 5 de la Ley 15/1999, de 13 de 
         diciembre, de Protección de datos, acerca de su política de protección de datos personales. 
         INTEREX 2003, S.L. figura inscrita en el Registro Mercantil de Murcia, Hoja MU-49488 Tomo 
         2020 Folio 66, con C.I.F. B-73263303

@@ -5,7 +5,7 @@ export default function AvisoLegalPage() {
         <h1 className="text-3xl font-light mb-6" style={{ fontFamily: 'var(--font-adelia)' }}>Aviso legal</h1>
 
         <p className="text-white/80 mb-4">
-          Este sitio web es titularidad de Interex S.L. (en adelante, "el Titular").
+          Este sitio web es titularidad de Interex S.L. (en adelante, &quot;el Titular&quot;).
           El acceso y uso de este sitio implican la aceptación de los términos y condiciones
           recogidos en este Aviso Legal.
         </p>

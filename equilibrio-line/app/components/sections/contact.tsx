@@ -322,7 +322,7 @@ const Contact = forwardRef<ContactRef>((props, ref) => {
     const hasError = formTouched[fieldName] && formErrors[fieldName];
     const isValid = formTouched[fieldName] && !formErrors[fieldName] && (fieldName === 'privacy' ? acceptedPrivacy : formData[fieldName as keyof FormData]);
 
-    let baseClasses = "w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border rounded-lg text-white placeholder-white/50 focus:outline-none transition-all duration-300 text-sm sm:text-base";
+    const baseClasses = "w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border rounded-lg text-white placeholder-white/50 focus:outline-none transition-all duration-300 text-sm sm:text-base";
 
     if (hasError) {
       return `${baseClasses} border-red-400 focus:border-red-400 bg-red-500/10`;
@@ -331,7 +331,7 @@ const Contact = forwardRef<ContactRef>((props, ref) => {
     } else {
       return `${baseClasses} border-white/20 focus:border-[var(--cor-dourado-claro)]`;
     }
-  }, [formTouched, formErrors, formData]);
+  }, [formTouched, formErrors, formData, acceptedPrivacy]);
 
   const treatments = allTreatments;
 
