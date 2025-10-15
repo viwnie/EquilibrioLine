@@ -18,6 +18,7 @@ interface FormErrors {
   phone?: string;
   email?: string;
   treatment?: string;
+  privacy?: string;
 }
 
 interface FormTouched {
@@ -25,6 +26,7 @@ interface FormTouched {
   phone: boolean;
   email: boolean;
   treatment: boolean;
+  privacy: boolean;
 }
 
 export default function Contact() {
@@ -41,7 +43,8 @@ export default function Contact() {
     name: false,
     phone: false,
     email: false,
-    treatment: false
+    treatment: false,
+    privacy: false
   });
 
   const [debouncedFormData, setDebouncedFormData] = useState<FormData>(formData);
@@ -93,13 +96,19 @@ export default function Contact() {
     return undefined;
   }, []);
 
+  const validatePrivacy = useCallback((accepted: boolean): string | undefined => {
+    if (!accepted) return 'Debes aceptar la política de privacidad';
+    return undefined;
+  }, []);
+
   // Validação completa do formulário (usando dados com debounce)
   const formErrors = useMemo((): FormErrors => ({
     name: validateName(debouncedFormData.name),
     phone: validatePhone(debouncedFormData.phone),
     email: validateEmail(debouncedFormData.email),
-    treatment: validateTreatment(debouncedFormData.treatment)
-  }), [debouncedFormData, validateName, validatePhone, validateEmail, validateTreatment]);
+    treatment: validateTreatment(debouncedFormData.treatment),
+    privacy: validatePrivacy(acceptedPrivacy)
+  }), [debouncedFormData, validateName, validatePhone, validateEmail, validateTreatment, validatePrivacy, acceptedPrivacy]);
 
   // Verifica se o formulário é válido baseado no modo
   const isFormValid = useMemo(() => {
@@ -188,7 +197,8 @@ export default function Contact() {
         name: true,
         phone: true,
         email: true,
-        treatment: true
+        treatment: true,
+        privacy: true
       });
     }
 
@@ -240,7 +250,8 @@ export default function Contact() {
           name: false,
           phone: false,
           email: false,
-          treatment: false
+          treatment: false,
+          privacy: false
         });
       } else {
         showToast('Hubo un error al enviar tu consulta. Por favor, intenta nuevamente.', 'error');
@@ -290,14 +301,15 @@ export default function Contact() {
       name: false,
       phone: false,
       email: false,
-      treatment: false
+      treatment: false,
+      privacy: false
     });
   };
 
   // Função para obter classes de estilo baseadas no estado do campo
   const getFieldClasses = useCallback((fieldName: keyof FormErrors) => {
     const hasError = formTouched[fieldName] && formErrors[fieldName];
-    const isValid = formTouched[fieldName] && !formErrors[fieldName] && formData[fieldName];
+    const isValid = formTouched[fieldName] && !formErrors[fieldName] && (fieldName === 'privacy' ? acceptedPrivacy : formData[fieldName as keyof FormData]);
 
     let baseClasses = "w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border rounded-lg text-white placeholder-white/50 focus:outline-none transition-all duration-300 text-sm sm:text-base";
 
@@ -544,9 +556,14 @@ export default function Contact() {
                   id="privacy-consent"
                   type="checkbox"
                   checked={acceptedPrivacy}
-                  onChange={(e) => setAcceptedPrivacy(e.target.checked)}
+                  onChange={(e) => {
+                    setAcceptedPrivacy(e.target.checked);
+                    setFormTouched(prev => ({
+                      ...prev,
+                      privacy: true
+                    }));
+                  }}
                   className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10 cursor-pointer"
-                  disabled={isWhatsAppMode}
                 />
                 <label htmlFor="privacy-consent" className="text-xs sm:text-sm text-white/80">
                   He leído y acepto la {" "}
@@ -554,6 +571,16 @@ export default function Contact() {
                   y consiento el tratamiento de mis datos para gestionar mi solicitud.
                 </label>
               </div>
+              
+              {/* Error message for privacy policy */}
+              {!isWhatsAppMode && formTouched.privacy && formErrors.privacy && (
+                <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                  {formErrors.privacy}
+                </p>
+              )}
 
               <div className="space-y-3">
                 {isWhatsAppMode ? (
