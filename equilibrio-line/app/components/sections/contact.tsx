@@ -216,7 +216,7 @@ export default function Contact() {
       formDataToSend.append('_autoresponse', 'Gracias por contactarnos. Hemos recibido tu consulta y te responderemos pronto.');
 
 
-      const response = await fetch('https://formsubmit.co/ce69530710a07ca84379de8515040ca2', {
+      const response = await fetch('https://formsubmit.co/42cf47a229d2ad960a727fa425d4f40c', {
         method: 'POST',
         body: formDataToSend
       });
