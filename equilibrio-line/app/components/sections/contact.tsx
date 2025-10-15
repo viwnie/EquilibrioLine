@@ -1,18 +1,48 @@
 "use client";
-import { useState } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { allTreatments } from "../../data/treatments";
 import { ContactInfoData } from "../../data/contactInfo";
 import Toast from "../ui/Toast";
 
+// Tipos para validação
+interface FormData {
+  name: string;
+  phone: string;
+  email: string;
+  treatment: string;
+}
+
+interface FormErrors {
+  name?: string;
+  phone?: string;
+  email?: string;
+  treatment?: string;
+}
+
+interface FormTouched {
+  name: boolean;
+  phone: boolean;
+  email: boolean;
+  treatment: boolean;
+}
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
     email: '',
     treatment: ''
   });
 
+  const [formTouched, setFormTouched] = useState<FormTouched>({
+    name: false,
+    phone: false,
+    email: false,
+    treatment: false
+  });
+
+  const [debouncedFormData, setDebouncedFormData] = useState<FormData>(formData);
   const [isLoading, setIsLoading] = useState(false);
   const [toast, setToast] = useState({
     isVisible: false,
@@ -20,27 +50,130 @@ export default function Contact() {
     type: 'success' as 'success' | 'error'
   });
 
-  const showToast = (message: string, type: 'success' | 'error') => {
+  // Hook para debounce dos dados do formulário
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedFormData(formData);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [formData]);
+
+  // Funções de validação
+  const validateName = useCallback((name: string): string | undefined => {
+    if (!name.trim()) return 'El nombre es obligatorio';
+    if (name.trim().length < 2) return 'El nombre debe tener al menos 2 caracteres';
+    if (name.trim().length > 50) return 'El nombre debe tener máximo 50 caracteres';
+    if (!/^[a-zA-ZÀ-ÿñÑ\s]+$/.test(name.trim())) return 'El nombre solo puede contener letras y espacios';
+    return undefined;
+  }, []);
+
+  const validatePhone = useCallback((phone: string): string | undefined => {
+    if (!phone.trim()) return 'El teléfono es obligatorio';
+    const cleanPhone = phone.replace(/\D/g, '');
+    // Formato español: 9 dígitos (móvil) o 9 dígitos (fijo)
+    if (cleanPhone.length !== 9) return 'El teléfono debe tener exactamente 9 dígitos';
+    // Validar que empiece con números válidos para España
+    if (!/^[6789]/.test(cleanPhone)) return 'El teléfono debe empezar con 6, 7, 8 o 9';
+    return undefined;
+  }, []);
+
+  const validateEmail = useCallback((email: string): string | undefined => {
+    if (!email.trim()) return 'El email es obligatorio';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) return 'El email debe tener un formato válido';
+    if (email.length > 100) return 'El email debe tener máximo 100 caracteres';
+    return undefined;
+  }, []);
+
+  const validateTreatment = useCallback((treatment: string): string | undefined => {
+    if (!treatment.trim()) return 'Selecciona un tratamiento';
+    return undefined;
+  }, []);
+
+  // Validação completa do formulário (usando dados com debounce)
+  const formErrors = useMemo((): FormErrors => ({
+    name: validateName(debouncedFormData.name),
+    phone: validatePhone(debouncedFormData.phone),
+    email: validateEmail(debouncedFormData.email),
+    treatment: validateTreatment(debouncedFormData.treatment)
+  }), [debouncedFormData, validateName, validatePhone, validateEmail, validateTreatment]);
+
+  // Verifica se o formulário é válido
+  const isFormValid = useMemo(() => {
+    return Object.values(formErrors).every(error => !error);
+  }, [formErrors]);
+
+  // Máscara para telefone español
+  const formatPhone = useCallback((value: string): string => {
+    const numbers = value.replace(/\D/g, '');
+    // Formato español: XXX XXX XXX (9 dígitos)
+    if (numbers.length <= 3) {
+      return numbers;
+    } else if (numbers.length <= 6) {
+      return numbers.replace(/(\d{3})(\d{1,3})/, '$1 $2');
+    } else {
+      return numbers.slice(0, 9).replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
+    }
+  }, []);
+
+  const showToast = useCallback((message: string, type: 'success' | 'error') => {
     setToast({
       isVisible: true,
       message,
       type
     });
-  };
+  }, []);
 
-  const hideToast = () => {
+  const hideToast = useCallback(() => {
     setToast(prev => ({ ...prev, isVisible: false }));
-  };
+  }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    
+    let formattedValue = value;
+    
+    // Aplicar máscara no telefone
+    if (name === 'phone') {
+      formattedValue = formatPhone(value);
+    }
+    
+    setFormData(prev => ({
+      ...prev,
+      [name]: formattedValue
+    }));
+
+    // Marcar campo como tocado
+    setFormTouched(prev => ({
+      ...prev,
+      [name]: true
+    }));
+  }, [formatPhone]);
+
+  const handleBlur = useCallback((fieldName: keyof FormTouched) => {
+    setFormTouched(prev => ({
+      ...prev,
+      [fieldName]: true
+    }));
+  }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Marcar todos os campos como tocados
+    setFormTouched({
+      name: true,
+      phone: true,
+      email: true,
+      treatment: true
+    });
+
+    if (!isFormValid) {
+      showToast('Por favor, corrige los errores en el formulario antes de enviar.', 'error');
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -62,6 +195,14 @@ export default function Contact() {
           email: '',
           treatment: ''
         });
+
+        // Reset touched state
+        setFormTouched({
+          name: false,
+          phone: false,
+          email: false,
+          treatment: false
+        });
       } else {
         showToast('Hubo un error al enviar tu consulta. Por favor, intenta nuevamente.', 'error');
       }
@@ -76,6 +217,25 @@ export default function Contact() {
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Marcar todos os campos como tocados
+    setFormTouched({
+      name: true,
+      phone: true,
+      email: true,
+      treatment: true
+    });
+
+    // Validar apenas campos necessários para WhatsApp (nome e tratamento)
+    const requiredForWhatsApp = {
+      name: validateName(formData.name),
+      treatment: validateTreatment(formData.treatment)
+    };
+
+    if (requiredForWhatsApp.name || requiredForWhatsApp.treatment) {
+      showToast('Por favor, completa al menos el nombre y selecciona un tratamiento para continuar.', 'error');
+      return;
+    }
+
     const message = `Hola 😊, soy ${formData.name}. Les escribo desde su página web porque estoy interesada en ${formData.treatment}. ¿Podrían darme más información, por favor?`;
     const whatsappUrl = `https://wa.me/34621665635?text=${encodeURIComponent(message)}`;
 
@@ -87,7 +247,30 @@ export default function Contact() {
       email: '',
       treatment: ''
     });
+
+    setFormTouched({
+      name: false,
+      phone: false,
+      email: false,
+      treatment: false
+    });
   };
+
+  // Função para obter classes de estilo baseadas no estado do campo
+  const getFieldClasses = useCallback((fieldName: keyof FormErrors) => {
+    const hasError = formTouched[fieldName] && formErrors[fieldName];
+    const isValid = formTouched[fieldName] && !formErrors[fieldName] && formData[fieldName];
+    
+    let baseClasses = "w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border rounded-lg text-white placeholder-white/50 focus:outline-none transition-all duration-300 text-sm sm:text-base";
+    
+    if (hasError) {
+      return `${baseClasses} border-red-400 focus:border-red-400 bg-red-500/10`;
+    } else if (isValid) {
+      return `${baseClasses} border-green-400 focus:border-green-400 bg-green-500/10`;
+    } else {
+      return `${baseClasses} border-white/20 focus:border-[var(--cor-dourado-claro)]`;
+    }
+  }, [formTouched, formErrors, formData]);
 
   const treatments = allTreatments;
 
@@ -148,65 +331,133 @@ export default function Contact() {
                 <label className="block text-white/80 text-sm font-medium mb-2">
                   Nombre Completo *
                 </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
-                  placeholder="Tu nombre"
-                />
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    onBlur={() => handleBlur('name')}
+                    className={getFieldClasses('name')}
+                    placeholder="Tu nombre"
+                  />
+                  {formTouched.name && !formErrors.name && formData.name && (
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                      <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                {formTouched.name && formErrors.name && (
+                  <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {formErrors.name}
+                  </p>
+                )}
               </div>
 
               <div>
                 <label className="block text-white/80 text-sm font-medium mb-2">
                   Teléfono *
                 </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
-                  placeholder="Tu número de teléfono"
-                />
+                <div className="relative">
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    onBlur={() => handleBlur('phone')}
+                    className={getFieldClasses('phone')}
+                    placeholder="Tu número de teléfono (ej: 612 345 678)"
+                  />
+                  {formTouched.phone && !formErrors.phone && formData.phone && (
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                      <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                {formTouched.phone && formErrors.phone && (
+                  <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {formErrors.phone}
+                  </p>
+                )}
               </div>
 
               <div>
                 <label className="block text-white/80 text-sm font-medium mb-2">
                   Correo Electrónico *
                 </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
-                  placeholder="tu@email.com"
-                />
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    onBlur={() => handleBlur('email')}
+                    className={getFieldClasses('email')}
+                    placeholder="tu@email.com"
+                  />
+                  {formTouched.email && !formErrors.email && formData.email && (
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                      <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                {formTouched.email && formErrors.email && (
+                  <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {formErrors.email}
+                  </p>
+                )}
               </div>
 
               <div>
                 <label className="block text-white/80 text-sm font-medium mb-2">
                   Tratamiento de Interés *
                 </label>
-                <select
-                  name="treatment"
-                  value={formData.treatment}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[var(--cor-dourado-claro)] transition-colors duration-300 text-sm sm:text-base"
-                >
-                  <option value="" className="bg-[var(--cor-charcoal)]">Selecciona un tratamiento</option>
-                  {treatments.map((treatment, index) => (
-                    <option key={index} value={treatment} className="bg-[var(--cor-charcoal)] break-words">
-                      {treatment}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    name="treatment"
+                    value={formData.treatment}
+                    onChange={handleInputChange}
+                    onBlur={() => handleBlur('treatment')}
+                    className={getFieldClasses('treatment')}
+                  >
+                    <option value="" className="bg-[var(--cor-charcoal)]">Selecciona un tratamiento</option>
+                    {treatments.map((treatment, index) => (
+                      <option key={index} value={treatment} className="bg-[var(--cor-charcoal)] break-words">
+                        {treatment}
+                      </option>
+                    ))}
+                  </select>
+                  {formTouched.treatment && !formErrors.treatment && formData.treatment && (
+                    <div className="absolute right-8 top-1/2 transform -translate-y-1/2">
+                      <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                {formTouched.treatment && formErrors.treatment && (
+                  <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {formErrors.treatment}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-3">
